@@ -1,0 +1,194 @@
+<app-nav></app-nav>
+<div class="container-fluid">
+<form class="form-inline m-2">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" name="toSearch" aria-label="Search" [(ngModel)]="compToSearch.ToSearch">
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="doSearch()">Search</button>
+</form>
+
+<table class="table table-hover table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <!-- COMP_ID -->
+        <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_id'" (click)="changeArrange('comp_id')">
+          <span *ngIf="compToSearch.Arrange === 'ASC'">
+              #ID<i class="fa fa-angle-double-up ml-1"></i>
+          </span>
+          <span *ngIf="compToSearch.Arrange === 'DESC'">
+              #ID<i class="fa fa-angle-double-down ml-1"></i>
+          </span>
+        </th>
+        <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_id'" (click)="changeArrange('comp_id')">
+            #ID
+        </th>
+        <!-- TONPIEN -->
+        <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_banno'" (click)="changeArrange('comp_banno')">
+          <span *ngIf="compToSearch.Arrange === 'ASC'">
+              TonPien<i class="fa fa-angle-double-up ml-1"></i>
+          </span>
+          <span *ngIf="compToSearch.Arrange === 'DESC'">
+              TonPien<i class="fa fa-angle-double-down ml-1"></i>
+          </span>
+        </th>
+        <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_banno'" (click)="changeArrange('comp_banno')">
+            TonPien
+        </th>
+        
+        <!-- COMP_NAME -->
+        <th class="centered-th mx-auto p-2 perc20" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_name'" (click)="changeArrange('comp_name')">
+          <span *ngIf="compToSearch.Arrange === 'ASC'">
+              Company's Name<i class="fa fa-angle-double-up ml-1"></i>
+          </span>
+          <span *ngIf="compToSearch.Arrange === 'DESC'">
+              Company's Name<i class="fa fa-angle-double-down ml-1"></i>
+          </span>
+        </th>
+        <th class="centered-th mx-auto p-2 perc20" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_name'" (click)="changeArrange('comp_name')">
+            Company's Name
+        </th>
+
+         <!-- COMP_LOCATION -->
+         <th class="centered-th mx-auto p-2 perc30" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_location'" (click)="changeArrange('comp_location')">
+          <span *ngIf="compToSearch.Arrange === 'ASC'">
+              Location<i class="fa fa-angle-double-up ml-1"></i>
+          </span>
+          <span *ngIf="compToSearch.Arrange === 'DESC'">
+              Location<i class="fa fa-angle-double-down ml-1"></i>
+          </span>
+        </th>
+        <th class="centered-th mx-auto p-2 perc30" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_location'" (click)="changeArrange('comp_location')">
+            Location
+        </th>
+
+        <!-- COMP_CONTACT -->
+        <th class="centered-th mx-auto p-2 perc15" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_contact'" (click)="changeArrange('comp_contact')">
+          <span *ngIf="compToSearch.Arrange === 'ASC'">
+              Contact<i class="fa fa-angle-double-up ml-1"></i>
+          </span>
+          <span *ngIf="compToSearch.Arrange === 'DESC'">
+              Contact<i class="fa fa-angle-double-down ml-1"></i>
+          </span>
+        </th>
+        <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_contact'" (click)="changeArrange('comp_contact')">
+            Contact
+        </th>
+
+        <th scope="col" class="text-center perc15">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let list of compToList | paginate: { id: 'companyList', itemsPerPage: paging.pageSize, currentPage: paging.CurrentPage, totalItems: paging.TotalCount }">
+          <td>{{list.comp_id}}</td>
+          <td>{{list.comp_banno}}</td>
+          <td>{{list.comp_name}}</td>
+          <td>{{list.comp_location}}</td>
+          <td>{{list.comp_contact}}</td>
+          <td class="text-center">
+
+            <button type="button" class="btn btn-info mr-2" (click)="openModal(template)"><i class="fa fa-folder-open-o"></i></button>
+            <button class="btn btn-primary" (click)="navigateToEdit(list)"><i class="fa fa-edit"></i></button>
+            <button class="btn btn-success ml-2"><i class="fa fa-send"></i></button>
+            
+          </td>
+
+          <ng-template #template>
+              <div class="modal-header">
+                <h4 class="modal-title pull-left">{{list.comp_name}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <div class="alert alert-dark m-2" role="alert">
+                  <strong>ID</strong> : {{list.comp_id}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>TonPien</strong> : {{list.comp_banno}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>Industry</strong> : {{list.comp_industry}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>Location</strong> : {{list.comp_location}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>Area</strong> : {{list.comp_area}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>Capital</strong> : {{list.comp_amount}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong># Employees</strong> : {{list.comp_employee}}
+                </div>
+                
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>Contact</strong> : {{list.comp_contact}}
+                </div>
+
+                <div class="alert alert-success m-2" role="alert">
+                    <strong>Tel</strong> : {{list.comp_tel}}
+                </div>
+
+                <div class="alert alert-success m-2" role="alert">
+                    <strong>Fax</strong> : {{list.comp_fax}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>URL</strong> : {{list.comp_url}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>Extra URL</strong> : {{list.comp_extraUrl}}
+                </div>
+
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>Tags</strong> : {{list.comp_tag}}
+                </div>
+
+                <div class="card m-2 border-info">
+                  <div class="card-header">
+                    Description
+                  </div>
+                  <div class="card-body">
+                      {{list.comp_desc}}
+                  </div>
+                </div>
+
+                <div class="card m-2 border-info">
+                  <div class="card-header">
+                    Media Report
+                  </div>
+                  <div class="card-body">
+                      {{list.comp_mediaReport}}
+                  </div>
+                </div>
+
+                <div class="card m-2 border-info">
+                  <div class="card-header">
+                    Business
+                  </div>
+                  <div class="card-body">
+                      {{list.comp_business}}
+                  </div>
+                </div>
+
+              </div>
+            </ng-template>
+
+        </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center" *ngIf="paging.TotalCount > paging.PageSize">
+      <pagination-controls 
+        id = "companyList"
+        (pageChange)="pageChanged($event)"
+        autoHide="true">
+      </pagination-controls>
+  </div>
+</div>

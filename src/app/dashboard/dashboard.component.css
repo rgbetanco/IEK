@@ -1,0 +1,27 @@
+.centered-th {
+    cursor: pointer; 
+}
+
+.perc5 {
+    width: 5%
+}
+
+.perc10 {
+    width: 10%
+}
+
+.perc15 {
+    width: 15%
+}
+
+.perc20 {
+    width: 20%;
+}
+
+.perc30 {
+    width: 30%;
+}
+
+.perc50 {
+    width: 50%;
+}
