@@ -4,6 +4,8 @@ import { RouterModule, Router } from '@angular/router';
 import { UserToLogin } from '../userToLogin';
 import { LoginService } from '../login.service';
 import { Login } from '../login';
+import { MemberService } from '../member.service';
+declare let alertify: any;
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private loginService: LoginService,
+    private memberService: MemberService
   ) {}
 
   ngOnInit() {
@@ -36,8 +39,12 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', this.loginModel.token);
           this.router.navigate(['/dashboard']);
 
+        } else {
+          alertify.error('Wrong username or password');
         }
 
+      }, error => {
+        alertify.error('Error: Possible network error');
       }
     );
 

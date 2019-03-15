@@ -10,9 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CompanyComponent } from './company/company.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { MemberComponent } from './member/member.component';
 
 @NgModule({
    declarations: [
@@ -20,7 +22,8 @@ import { CompanyComponent } from './company/company.component';
       LoginComponent,
       DashboardComponent,
       NavComponent,
-      CompanyComponent
+      CompanyComponent,
+      MemberComponent
    ],
    imports: [
       BrowserModule,
@@ -28,7 +31,8 @@ import { CompanyComponent } from './company/company.component';
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
-      NgxPaginationModule,
+      PaginationModule.forRoot(),
+      TabsModule.forRoot(),
       JwtModule.forRoot({
          config : {
             tokenGetter: () => {

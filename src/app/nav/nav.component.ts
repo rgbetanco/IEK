@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
+  public membersLink = '/members';
+  public dashboardLink = '/dashboard';
+
   constructor(private router: Router) { }
 
   ngOnInit() {

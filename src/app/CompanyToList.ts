@@ -18,4 +18,5 @@ export interface CompanyToList {
     comp_tel: string;
     comp_url: string;
     done: string;
+    confirmed: number;
 }

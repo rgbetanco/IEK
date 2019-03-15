@@ -1,56 +1,198 @@
 <app-nav></app-nav>
-<p>
-  company works!
-  {{company?.comp_id}}
-</p>
 
-<div class="container">
+<div class="container mt-3 mb-3">
 
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    <div *ngIf="error" class="alert alert-danger col-md-12" role="alert">
+        {{errorMessage}}
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
+  
 
+    <form #companyForm="ngForm">
+
+      <div class="form-row">
+          <div class="form-group col-md-4">
+              <label for="comp_banno">TonPien</label>
+              <input type="text" class="form-control" id="comp_banno" name="comp_banno" placeholder="" value={{companyToEdit?.comp_banno}} [(ngModel)]="companyToEdit.comp_banno">
+            </div>
+          <div class="form-group col-md-8">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" name="name" placeholder="" value={{companyToEdit?.comp_name}} [(ngModel)]="companyToEdit.comp_name">
+          </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputIndustry">Industry</label>
+          <input type="text" class="form-control" id="inputIndustry" name="industry" placeholder="" value={{companyToEdit?.comp_industry}} [(ngModel)]="companyToEdit.comp_industry">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputLocation">Location</label>
+          <input type="text" class="form-control" id="inputLocation" name="location" placeholder="" value="{{companyToEdit?.comp_location}}" [(ngModel)]="companyToEdit.comp_location">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputArea">Area</label>
+            <input type="text" class="form-control" id="inputArea" name="area" placeholder="" value="{{companyToEdit?.comp_area}}" [(ngModel)]="companyToEdit.comp_area">
+          </div>
+      </div>
+
+      <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputAmount">Capital</label>
+            <input type="text" class="form-control" id="inputAmount" name="amount" placeholder="" value={{companyToEdit?.comp_amount}} [(ngModel)]="companyToEdit.comp_amount">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputEmployees"># Employees</label>
+            <input type="text" class="form-control" id="inputEmployees" name="Employees" placeholder="" value="{{companyToEdit?.comp_employee}}" [(ngModel)]="companyToEdit.comp_employee">
+          </div>
+          <div class="form-group col-md-4">
+              <label for="inputContact">Contact</label>
+              <input type="text" class="form-control" id="inputContact" name="contact" placeholder="" value="{{companyToEdit?.comp_contact}}" [(ngModel)]="companyToEdit.comp_contact">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="inputTel">Tel</label>
+              <input type="text" class="form-control" id="inputTel" name="tel" placeholder="" value={{companyToEdit?.comp_tel}} [(ngModel)]="companyToEdit.comp_tel">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputFax">Fax</label>
+              <input type="text" class="form-control" id="inputFax" name="fax" placeholder="" value="{{companyToEdit?.comp_fax}}" [(ngModel)]="companyToEdit.comp_fax">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="inputUrl">URL</label>
+                <input type="text" class="form-control" id="inputUrl" name="url" placeholder="" value="{{companyToEdit?.comp_url}}" [(ngModel)]="companyToEdit.comp_url">
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputExtraURL">Extra URL</label>
+            <input type="text" class="form-control" id="inputExtraURL" name="extraUrl" placeholder="" value="{{companyToEdit?.comp_extraUrl}}" [(ngModel)]="companyToEdit.comp_extraUrl" >
+          </div>
+          <div class="form-group">
+            <label for="inputTags">Tags</label>
+            <input type="text" class="form-control" id="inputTags" name="tag" placeholder="" value="{{companyToEdit?.comp_tag}}" [(ngModel)]="companyToEdit.comp_tag" >
+          </div>
+<!-- TABS -->
+          <div class="mt-4">
+              <tabset>
+                <tab heading="Description" id="tab1">
+                    <div class="form-group">
+                        <label for="inputDescription"></label>
+                        <textarea rows="10" cols="10" class="form-control" id="inputDescription" name="description" placeholder="" value="{{companyToEdit?.comp_desc}}" [(ngModel)]="companyToEdit.comp_desc" ></textarea>
+                    </div>
+                </tab>
+                <tab heading="Media Report">
+                    <div class="form-group">
+                        <label for="inputMediaReport"></label>
+                        <textarea rows="10" cols="10" class="form-control" id="inputMediaReport" name="mediareport" placeholder="" value="{{companyToEdit?.comp_mediaReport}}" [(ngModel)]="companyToEdit.comp_mediaReport" ></textarea>
+                    </div>
+                </tab>
+                <tab heading="Business">
+                    <div class="form-group">
+                        <label for="inputBusiness"></label>
+                        <textarea rows="10" cols="10" class="form-control" id="inputBusiness" name="business" placeholder="" value="{{companyToEdit?.comp_business}}" [(ngModel)]="companyToEdit.comp_business" ></textarea>
+                    </div>
+                </tab>
+              </tabset>
+            </div>
+            
+  
+      <button type="submit" class="btn btn-primary" (click)="openModal(template)">Confirm<i class="	fa fa-check-circle-o ml-2"></i></button>
+      <button class="btn btn-danger ml-2" (click)="goBack()">Back<i class="fa fa-history ml-2"></i></button>
+    </form>
+
+    <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">{{companyToEdit.comp_name}}</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="alert alert-dark m-2" role="alert">
+            <strong>ID</strong> : {{companyToEdit.comp_id}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>TonPien</strong> : {{companyToEdit.comp_banno}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>Industry</strong> : {{companyToEdit.comp_industry}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>Location</strong> : {{companyToEdit.comp_location}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>Area</strong> : {{companyToEdit.comp_area}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>Capital</strong> : {{companyToEdit.comp_amount}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong># Employees</strong> : {{companyToEdit.comp_employee}}
+          </div>
+          
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>Contact</strong> : {{companyToEdit.comp_contact}}
+          </div>
+
+          <div class="alert alert-success m-2" role="alert">
+              <strong>Tel</strong> : {{companyToEdit.comp_tel}}
+          </div>
+
+          <div class="alert alert-success m-2" role="alert">
+              <strong>Fax</strong> : {{companyToEdit.comp_fax}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>URL</strong> : {{companyToEdit.comp_url}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>Extra URL</strong> : {{companyToEdit.comp_extraUrl}}
+          </div>
+
+          <div class="alert alert-dark m-2" role="alert">
+              <strong>Tags</strong> : {{companyToEdit.comp_tag}}
+          </div>
+
+          <div class="card m-2 border-info">
+            <div class="card-header">
+              Description
+            </div>
+            <div class="card-body">
+                {{companyToEdit.comp_desc}}
+            </div>
+          </div>
+
+          <div class="card m-2 border-info">
+            <div class="card-header">
+              Media Report
+            </div>
+            <div class="card-body">
+                {{companyToEdit.comp_mediaReport}}
+            </div>
+          </div>
+
+          <div class="card m-2 border-info">
+            <div class="card-header">
+              Business
+            </div>
+            <div class="card-body">
+                {{companyToEdit.comp_business}}
+            </div>
+          </div>
+
+          <button class="btn btn-danger ml-2" (click)="editCompany()">Send<i class="fa fa-send ml-2"></i></button>
+
+        </div>
+      </ng-template>
+  
 </div>

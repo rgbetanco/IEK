@@ -11,10 +11,10 @@
         <!-- COMP_ID -->
         <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_id'" (click)="changeArrange('comp_id')">
           <span *ngIf="compToSearch.Arrange === 'ASC'">
-              #ID<i class="fa fa-angle-double-up ml-1"></i>
+              #ID<i class="fa fa-sort-asc ml-1"></i>
           </span>
           <span *ngIf="compToSearch.Arrange === 'DESC'">
-              #ID<i class="fa fa-angle-double-down ml-1"></i>
+              #ID<i class="fa fa-sort-desc ml-1"></i>
           </span>
         </th>
         <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_id'" (click)="changeArrange('comp_id')">
@@ -23,10 +23,10 @@
         <!-- TONPIEN -->
         <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_banno'" (click)="changeArrange('comp_banno')">
           <span *ngIf="compToSearch.Arrange === 'ASC'">
-              TonPien<i class="fa fa-angle-double-up ml-1"></i>
+              TonPien<i class="fa fa-sort-asc ml-1"></i>
           </span>
           <span *ngIf="compToSearch.Arrange === 'DESC'">
-              TonPien<i class="fa fa-angle-double-down ml-1"></i>
+              TonPien<i class="fa fa-sort-desc ml-1"></i>
           </span>
         </th>
         <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_banno'" (click)="changeArrange('comp_banno')">
@@ -36,10 +36,10 @@
         <!-- COMP_NAME -->
         <th class="centered-th mx-auto p-2 perc20" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_name'" (click)="changeArrange('comp_name')">
           <span *ngIf="compToSearch.Arrange === 'ASC'">
-              Company's Name<i class="fa fa-angle-double-up ml-1"></i>
+              Company's Name<i class="fa fa-sort-asc ml-1"></i>
           </span>
           <span *ngIf="compToSearch.Arrange === 'DESC'">
-              Company's Name<i class="fa fa-angle-double-down ml-1"></i>
+              Company's Name<i class="fa fa-sort-desc ml-1"></i>
           </span>
         </th>
         <th class="centered-th mx-auto p-2 perc20" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_name'" (click)="changeArrange('comp_name')">
@@ -49,10 +49,10 @@
          <!-- COMP_LOCATION -->
          <th class="centered-th mx-auto p-2 perc30" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_location'" (click)="changeArrange('comp_location')">
           <span *ngIf="compToSearch.Arrange === 'ASC'">
-              Location<i class="fa fa-angle-double-up ml-1"></i>
+              Location<i class="fa fa-sort-asc ml-1"></i>
           </span>
           <span *ngIf="compToSearch.Arrange === 'DESC'">
-              Location<i class="fa fa-angle-double-down ml-1"></i>
+              Location<i class="fa fa-sort-desc ml-1"></i>
           </span>
         </th>
         <th class="centered-th mx-auto p-2 perc30" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_location'" (click)="changeArrange('comp_location')">
@@ -62,10 +62,10 @@
         <!-- COMP_CONTACT -->
         <th class="centered-th mx-auto p-2 perc15" scope="col" *ngIf="compToSearch.ArrangeFor === 'comp_contact'" (click)="changeArrange('comp_contact')">
           <span *ngIf="compToSearch.Arrange === 'ASC'">
-              Contact<i class="fa fa-angle-double-up ml-1"></i>
+              Contact<i class="fa fa-sort-asc ml-1"></i>
           </span>
           <span *ngIf="compToSearch.Arrange === 'DESC'">
-              Contact<i class="fa fa-angle-double-down ml-1"></i>
+              Contact<i class="fa fa-sort-desc ml-1"></i>
           </span>
         </th>
         <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'comp_contact'" (click)="changeArrange('comp_contact')">
@@ -76,7 +76,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let list of compToList | paginate: { id: 'companyList', itemsPerPage: paging.pageSize, currentPage: paging.CurrentPage, totalItems: paging.TotalCount }">
+        <tr *ngFor="let list of compToList" [class.table-success]="list.confirmed == 1">
           <td>{{list.comp_id}}</td>
           <td>{{list.comp_banno}}</td>
           <td>{{list.comp_name}}</td>
@@ -86,9 +86,24 @@
 
             <button type="button" class="btn btn-info mr-2" (click)="openModal(template)"><i class="fa fa-folder-open-o"></i></button>
             <button class="btn btn-primary" (click)="navigateToEdit(list)"><i class="fa fa-edit"></i></button>
-            <button class="btn btn-success ml-2"><i class="fa fa-send"></i></button>
+            <button class="btn btn-success ml-2" (click)="openModal(confirmSend)"><i class="fa fa-send"></i></button>
             
           </td>
+ 
+          <ng-template #confirmSend>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Sending Confirmation</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to confirm sending company?
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-danger" (click)="confirmCompany(list.comp_id)"><i class="fa fa-send"></i> Confirm</button>
+            </div>
+          </ng-template>
 
           <ng-template #template>
               <div class="modal-header">
@@ -184,11 +199,44 @@
         </tr>
     </tbody>
   </table>
-  <div class="d-flex justify-content-center" *ngIf="paging.TotalCount > paging.PageSize">
+
+  <!-- <div class="d-flex justify-content-center" *ngIf="paging.TotalCount > paging.PageSize">
       <pagination-controls 
-        id = "companyList"
+        id = 'companyList'
         (pageChange)="pageChanged($event)"
         autoHide="true">
-      </pagination-controls>
+  </pagination-controls> -->
+
+  <div class="col-md-6">
+      <div class="mx-auto">
+          
+      </div>
+    </div>
+    <div class="col-md-6">
+      
   </div>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-7">
+        <pagination [boundaryLinks]="true" [totalItems]="paging.TotalCount" [(ngModel)]="paging.CurrentPage"
+            [maxSize] = 10 (pageChanged)="pageChanged($event)"
+            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="{{paging.TotalPages}} &raquo;">
+          </pagination>
+      </div>
+      <div class="col col-lg-2">
+        <div class="form-group form-inline ml-2">
+          <input class="form-control form-control-sm col-md-4" type="text" name="newpage" placeholder="Go to page" [(ngModel)]="gotopage" >
+          <button class="form-control form-control-sm btn btn-primary ml-2" (click)="goToPage()">Go</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- </div> -->
+
+  <!-- <div class="alert alert-dark" role="alert">
+      Total Items: {{paging.TotalCount}},  Total Pages: {{paging.TotalPages}}
+  </div> -->
+
 </div>
