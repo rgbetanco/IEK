@@ -6,6 +6,7 @@ import { CompanyToList } from '../CompanyToList';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Paging } from '../Paging';
 import { MemberService } from '../member.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 declare let alertify: any;
 
 @Component({
@@ -16,6 +17,9 @@ declare let alertify: any;
 
 export class DashboardComponent implements OnInit {
 
+  writePermission = 0;
+  adminPermission = 0;
+  decodedData = '';
   modalRef: BsModalRef;
 
   compToSearch: CompanyToSearch = {
@@ -41,15 +45,52 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router,
               private companyService: CompanyService,
               private memberService: MemberService,
+              public jwtHelper: JwtHelperService,
               private modalService: BsModalService) { }
 
   ngOnInit() {
+
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/login']);
     }
 
+    this.decodedData = this.jwtHelper.decodeToken(localStorage.getItem('token'));
+    if (this.decodedData['data']['permission'] > 807) {
+      this.adminPermission = 1;
+    }
+
+    if (this.decodedData['data']['permission'] > 295) {
+      this.writePermission = 1;
+    }
+
     this.getCompanies();
 
+  }
+
+  clearConfirmedCompany() {
+
+    this.modalRef.hide();
+
+    this.companyService.clearconfirmedCompany().subscribe (
+
+      returned => {
+
+        if ( returned['r'] === 0) {
+
+          this.getCompanies();
+          alertify.success('Company confirmed flag cleared');
+
+        } else {
+
+          alertify.error('Error confirming the company');
+
+        }
+      }, error => {
+
+        alertify.error('Network error');
+
+      }
+    );
   }
 
   confirmCompany(id) {

@@ -14,6 +14,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CompanyComponent } from './company/company.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TooltipModule } from 'ngx-bootstrap';
 import { MemberComponent } from './member/member.component';
 
 @NgModule({
@@ -33,12 +34,13 @@ import { MemberComponent } from './member/member.component';
       ReactiveFormsModule,
       PaginationModule.forRoot(),
       TabsModule.forRoot(),
+      TooltipModule.forRoot(),
       JwtModule.forRoot({
          config : {
             tokenGetter: () => {
                return localStorage.getItem('token');
              },
-            whitelistedDomains: ['localhost:5000', 'localhost:4200'],
+            whitelistedDomains: ['34.192.48.45:5000', '34.192.48.45:80'],
             blacklistedRoutes: ['']
          }
       }),

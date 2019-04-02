@@ -2,19 +2,19 @@
 <div class="container-fluid mt-4">
 <div class="text-center">
   <div class="card mb-2">
-    <div class="card-header">Add New Member</div>
+    <div class="card-header">加入使用者</div>
     <div class="card-body">
       <form #registerFrom="ngForm" class="form-inline" (ngSubmit)="add()">
 
               <div class="form-group mb-2">
                 <!-- <label for="emailr" class="sr-only">Email</label> -->
-                <input type="text" class="form-control" id="emailr" name="emailr" placeholder="email@example.com" [(ngModel)]="model.email">
+                <input type="text" class="form-control" id="emailr" name="emailr" placeholder="email@example.com" [(ngModel)]="model.email" required>
               </div>
               <div class="form-group mx-sm-3 mb-2">
                 <!-- <label for="passwordr" class="sr-only">Password</label> -->
-                <input type="password" class="form-control" id="passwordr" name="passwordr" placeholder="Password" [(ngModel)]="model.password">
+                <input type="password" class="form-control" id="passwordr" name="passwordr" placeholder="Password" [(ngModel)]="model.password" required>
               </div>
-              <button type="submit" class="btn btn-primary mb-2"> <i class="fa fa-address-book-o"></i> Add Member</button>
+              <button type="submit" class="btn btn-primary mb-2"> <i class="fa fa-address-book-o"></i> 加入使用者</button>
 
       </form>
     </div>
@@ -25,12 +25,12 @@
 <table class="table table-hover table-sm">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Username / Email</th>
-      <th scope="col">Last Login</th>
-      <th scope="col">Created</th>
-      <th scope="col">Permissions</th>
-      <th scope="col">Actions</th>
+      <th scope="col">編號</th>
+      <th scope="col">使用者(Email)</th>
+      <th scope="col">最後登入</th>
+      <th scope="col">創建</th>
+      <th scope="col">權限</th>
+      <th scope="col">管理</th>
     </tr>
   </thead>
   <tbody>
@@ -42,23 +42,23 @@
       <td>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" (change)="updatePermission(item.id)" value="write" [checked]="item.writePermission" [disabled]="!adminPermission" [(ngModel)]="item.writePermission">
-            <label class="form-check-label" for="inlineCheckbox2">Write</label>
+            <label class="form-check-label" for="inlineCheckbox2">編輯</label>
           </div>
       </td>
-      <td><button class="btn btn-danger" [disabled]="!adminPermission" (click)="openModal(template)"><i class="fa fa-close"></i> Disable</button></td>
+      <td><button class="btn btn-danger" [disabled]="!adminPermission" (click)="openModal(template)"><i class="fa fa-close"></i> 刪除</button></td>
 
       <ng-template #template>
           <div class="modal-header">
-            <h4 class="modal-title pull-left">Confirmation</h4>
+            <h4 class="modal-title pull-left">確認</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            Are you sure you want to disable the member ?
+            您確定要禁用該會員嗎？
           </div>
           <div class="modal-footer">
-            <button class="btn btn-danger" (click)="disableMember(item.id)">Confirm</button>
+            <button class="btn btn-danger" (click)="disableMember(item.id)">確認</button>
           </div>
         </ng-template>
 

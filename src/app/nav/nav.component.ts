@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-nav',
@@ -8,12 +9,28 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
+  decodedData = '';
+  adminPermission = 0;
+  writePermission = 0;
+  userEmail = '';
+
   public membersLink = '/members';
   public dashboardLink = '/dashboard';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public jwtHelper: JwtHelperService) { }
 
   ngOnInit() {
+    this.decodedData = this.jwtHelper.decodeToken(localStorage.getItem('token'));
+    if (this.decodedData['data']['permission'] > 807) {
+      this.adminPermission = 1;
+    }
+
+    if (this.decodedData['data']['permission'] > 295) {
+      this.writePermission = 1;
+    }
+
+    this.userEmail = this.decodedData['data']['email'];
+
   }
 
   logout() {

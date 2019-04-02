@@ -9,7 +9,8 @@ import { CompanyToList } from './CompanyToList';
 })
 export class CompanyService {
 
-  private companyUrl = 'http://localhost:8088/company';
+  // private companyUrl = 'http://localhost:5000/company';
+  private companyUrl = 'http://34.192.48.45:5000/company';
 
   private httpOptions = {
 
@@ -36,6 +37,13 @@ export class CompanyService {
 
     return this.http.post<any>(url, param, this.httpOptions);
 
+  }
+
+  clearconfirmedCompany(): Observable<any> {
+
+    const url = this.companyUrl + '/clearconfirmed';
+
+    return this.http.get<any>(url, this.httpOptions);
   }
 
   getCompany(comp_id: number): Observable<any> {

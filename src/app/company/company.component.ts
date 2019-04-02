@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { CompanyService } from '../company.service';
 import { CompanyToList } from '../CompanyToList';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {Location} from '@angular/common';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-company',
@@ -12,6 +14,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class CompanyComponent implements OnInit {
 
+  decodedData = '';
+  writePermission = 0;
   error: Boolean = false;
   errorMessage = '';
 
@@ -46,6 +50,8 @@ export class CompanyComponent implements OnInit {
 
   constructor ( private activatedRoute: ActivatedRoute,
                 private compService: CompanyService,
+                private _location: Location,
+                public jwtHelper: JwtHelperService,
                 private modalService: BsModalService) {
 
    }
@@ -57,6 +63,13 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.decodedData = this.jwtHelper.decodeToken(localStorage.getItem('token'));
+    if (this.decodedData['data']['permission'] > 295) {
+      this.writePermission = 1;
+    } else {
+      this._location.back();
+    }
 
     this.subscription = this.activatedRoute.params.subscribe (
 

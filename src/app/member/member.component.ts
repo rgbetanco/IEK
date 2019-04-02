@@ -2,9 +2,10 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MemberToRegister } from '../MemberToRegister';
 import { MemberService } from '../member.service';
-import { MemberToList } from '../memberToList';
+import { MemberToList } from '../MemberToList';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {Location} from '@angular/common';
 
 declare let alertify: any;
 
@@ -26,6 +27,7 @@ export class MemberComponent implements OnInit {
     private router: Router,
     private memberService: MemberService,
     public jwtHelper: JwtHelperService,
+    private _location: Location,
     private modalService: BsModalService) { }
 
   ngOnInit() {
@@ -37,6 +39,8 @@ export class MemberComponent implements OnInit {
     this.decodedData = this.jwtHelper.decodeToken(localStorage.getItem('token'));
     if (this.decodedData['data']['permission'] >= 807) {
       this.adminPermission = 1;
+    } else {
+      this._location.back();
     }
 
     this.listUser();
@@ -58,26 +62,32 @@ export class MemberComponent implements OnInit {
 
   add() {
 
-    this.memberService.register(this.model).subscribe(
-      returned => {
+    if (this.model.email === '' || this.model.password === '') {
 
-        if (returned['r'] === 0) {
+      alertify.error('必需參數錯誤');
 
-          this.model.email = '';
-          this.model.password = '';
-          this.listUser();
-          alertify.success('User Registered');
+    } else {
+      this.memberService.register(this.model).subscribe(
+        returned => {
 
-        } else {
+          if (returned['r'] === 0) {
 
-          alertify.error(returned['m']);
+            this.model.email = '';
+            this.model.password = '';
+            this.listUser();
+            alertify.success('User Registered');
 
+          } else {
+
+            alertify.error(returned['m']);
+
+          }
+
+        }, errorMessage => {
+          alertify.error('Error, possible duplicated record');
         }
-
-      }, errorMessage => {
-        alertify.error('Error, possible duplicated record');
-      }
-    );
+      );
+    }
   }
 
   disableMember (id) {

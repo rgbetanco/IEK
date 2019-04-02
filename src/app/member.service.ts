@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MemberToList } from './memberToList';
+import { MemberToList } from './MemberToList';
 import { MemberToRegister } from './MemberToRegister';
 
 @Injectable({
@@ -9,7 +9,8 @@ import { MemberToRegister } from './MemberToRegister';
 })
 export class MemberService {
 
-  private memberUrl = 'http://localhost:8088/user';
+  // private memberUrl = 'http://rgbetanco.net:8082/user';
+  private memberUrl = 'http://34.192.48.45:5000/user';
 
   private httpOptions = {
 
