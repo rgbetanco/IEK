@@ -16,6 +16,11 @@ import { CompanyComponent } from './company/company.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TooltipModule } from 'ngx-bootstrap';
 import { MemberComponent } from './member/member.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -24,7 +29,8 @@ import { MemberComponent } from './member/member.component';
       DashboardComponent,
       NavComponent,
       CompanyComponent,
-      MemberComponent
+      MemberComponent,
+      AddCompanyComponent
    ],
    imports: [
       BrowserModule,
@@ -37,9 +43,7 @@ import { MemberComponent } from './member/member.component';
       TooltipModule.forRoot(),
       JwtModule.forRoot({
          config : {
-            tokenGetter: () => {
-               return localStorage.getItem('token');
-             },
+            tokenGetter: tokenGetter,
             whitelistedDomains: ['34.192.48.45:5000', '34.192.48.45:80'],
             blacklistedRoutes: ['']
          }

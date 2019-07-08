@@ -1,0 +1,226 @@
+<app-nav></app-nav>
+
+<div class="container mt-3 mb-3">
+
+  <div *ngIf="error" class="alert alert-danger col-md-12" role="alert">
+    {{errorMessage}}
+  </div>
+
+
+  <form #companyForm="ngForm">
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="comp_banno">統編</label>
+        <input type="text" class="form-control" id="comp_banno" name="comp_banno" placeholder=""
+          value={{companyToAdd?.comp_banno}} [(ngModel)]="companyToAdd.comp_banno">
+      </div>
+      <div class="form-group col-md-8">
+        <label for="inputName">公司名稱</label>
+        <input type="text" class="form-control" id="inputName" name="name" placeholder=""
+          value={{companyToAdd?.comp_name}} [(ngModel)]="companyToAdd.comp_name">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputIndustry">產業類別</label>
+        <input type="text" class="form-control" id="inputIndustry" name="industry" placeholder=""
+          value={{companyToAdd?.comp_industry}} [(ngModel)]="companyToAdd.comp_industry">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputLocation">公司地址</label>
+        <input type="text" class="form-control" id="inputLocation" name="location" placeholder=""
+          value="{{companyToAdd?.comp_location}}" [(ngModel)]="companyToAdd.comp_location">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputArea">公司地區</label>
+        <input type="text" class="form-control" id="inputArea" name="area" placeholder=""
+          value="{{companyToAdd?.comp_area}}" [(ngModel)]="companyToAdd.comp_area">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputAmount">資本額</label>
+        <input type="text" class="form-control" id="inputAmount" name="amount" placeholder=""
+          value={{companyToAdd?.comp_amount}} [(ngModel)]="companyToAdd.comp_amount">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputEmployees">員工人數</label>
+        <input type="text" class="form-control" id="inputEmployees" name="Employees" placeholder=""
+          value="{{companyToAdd?.comp_employee}}" [(ngModel)]="companyToAdd.comp_employee">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputContact">聯絡人</label>
+        <input type="text" class="form-control" id="inputContact" name="contact" placeholder=""
+          value="{{companyToAdd?.comp_contact}}" [(ngModel)]="companyToAdd.comp_contact">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="inputTel">電話</label>
+        <input type="text" class="form-control" id="inputTel" name="tel" placeholder="" value={{companyToAdd?.comp_tel}}
+          [(ngModel)]="companyToAdd.comp_tel">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputFax">傳真</label>
+        <input type="text" class="form-control" id="inputFax" name="fax" placeholder=""
+          value="{{companyToAdd?.comp_fax}}" [(ngModel)]="companyToAdd.comp_fax">
+      </div>
+      <div class="form-group col-md-8">
+        <label for="inputUrl">公司網址</label>
+        <input type="text" class="form-control" id="inputUrl" name="url" placeholder=""
+          value="{{companyToAdd?.comp_url}}" [(ngModel)]="companyToAdd.comp_url">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputExtraURL">粉絲專頁(FB)</label>
+      <input type="text" class="form-control" id="inputExtraURL" name="extraUrl" placeholder=""
+        value="{{companyToAdd?.comp_extra_url}}" [(ngModel)]="companyToAdd.comp_extra_url">
+    </div>
+    <div class="form-group">
+      <label for="inputTags">標籤(Yourator)</label>
+      <input type="text" class="form-control" id="inputTags" name="tag" placeholder=""
+        value="{{companyToAdd?.comp_tag}}" [(ngModel)]="companyToAdd.comp_tag">
+    </div>
+    <!-- TABS -->
+    <div class="mt-4">
+      <tabset>
+        <tab heading="公司簡介" id="tab1">
+          <div class="form-group">
+            <label for="inputDescription"></label>
+            <textarea rows="10" cols="10" class="form-control" id="inputDescription" name="description" placeholder=""
+              value="{{companyToAdd?.comp_desc}}" [(ngModel)]="companyToAdd.comp_desc"></textarea>
+          </div>
+        </tab>
+        <tab heading="媒體報導">
+          <div class="form-group">
+            <label for="inputMediaReport"></label>
+            <textarea rows="10" cols="10" class="form-control" id="inputMediaReport" name="mediareport" placeholder=""
+              value="{{companyToAdd?.comp_media_report}}" [(ngModel)]="companyToAdd.comp_media_report"></textarea>
+          </div>
+        </tab>
+        <tab heading="主要商品/服務項目">
+          <div class="form-group">
+            <label for="inputBusiness"></label>
+            <textarea rows="10" cols="10" class="form-control" id="inputBusiness" name="business" placeholder=""
+              value="{{companyToAdd?.comp_business}}" [(ngModel)]="companyToAdd.comp_business"></textarea>
+          </div>
+        </tab>
+        <tab heading="關鍵字">
+          <div class="form-group">
+            <label for="inputKeyword"></label>
+            <textarea rows="10" cols="10" class="form-control" id="inputKeyword" name="keyword" placeholder=""
+              value="{{companyToAdd?.comp_keyword}}" [(ngModel)]="companyToAdd.comp_keyword"></textarea>
+          </div>
+        </tab>
+      </tabset>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="openModal(template)">確認<i
+        class="	fa fa-check-circle-o ml-2"></i></button>
+    <button class="btn btn-danger ml-2" (click)="goBack()">返回<i class="fa fa-history ml-2"></i></button>
+  </form>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{companyToAdd.comp_name}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>統編</strong> : {{companyToAdd.comp_banno}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>產業類別</strong> : {{companyToAdd.comp_industry}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>公司地址</strong> : {{companyToAdd.comp_location}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>公司地區</strong> : {{companyToAdd.comp_area}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>資本額</strong> : {{companyToAdd.comp_amount}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>員工人數</strong> : {{companyToAdd.comp_employee}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>聯絡人</strong> : {{companyToAdd.comp_contact}}
+      </div>
+
+      <div class="alert alert-success m-2" role="alert">
+        <strong>電話</strong> : {{companyToAdd.comp_tel}}
+      </div>
+
+      <div class="alert alert-success m-2" role="alert">
+        <strong>傳真</strong> : {{companyToAdd.comp_fax}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>公司網址</strong> : {{companyToAdd.comp_url}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>粉絲專頁(FB)</strong> : {{companyToAdd.comp_extra_url}}
+      </div>
+
+      <div class="alert alert-dark m-2" role="alert">
+        <strong>標籤(Yourator)</strong> : {{companyToAdd.comp_tag}}
+      </div>
+
+      <div class="card m-2 border-info">
+        <div class="card-header">
+          公司簡介
+        </div>
+        <div class="card-body">
+          {{companyToAdd.comp_desc}}
+        </div>
+      </div>
+
+      <div class="card m-2 border-info">
+        <div class="card-header">
+          媒體報導
+        </div>
+        <div class="card-body">
+          {{companyToAdd.comp_media_report}}
+        </div>
+      </div>
+
+      <div class="card m-2 border-info">
+        <div class="card-header">
+          主要商品/服務項目
+        </div>
+        <div class="card-body">
+          {{companyToAdd.comp_business}}
+        </div>
+      </div>
+
+      <div class="card m-2 border-info">
+        <div class="card-header">
+          關鍵字
+        </div>
+        <div class="card-body">
+          {{companyToAdd.comp_keyword}}
+        </div>
+      </div>
+
+      <button class="btn btn-danger ml-2" (click)="addCompany()">發送<i class="fa fa-send ml-2"></i></button>
+
+    </div>
+  </ng-template>
+
+</div>

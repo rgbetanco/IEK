@@ -4,13 +4,15 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CompanyComponent } from './company/company.component';
 import { MemberComponent } from './member/member.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'company/:id', component: CompanyComponent },
-  { path: 'members', component: MemberComponent }
+  { path: 'members', component: MemberComponent },
+  { path: 'add-company', component: AddCompanyComponent}
 ];
 
 @NgModule({

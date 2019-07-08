@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyService } from '../company.service';
 import { CompanyToSearch } from '../CompanyToSearch';
@@ -16,7 +16,7 @@ declare let alertify: any;
 })
 
 export class DashboardComponent implements OnInit {
-
+  
   writePermission = 0;
   adminPermission = 0;
   decodedData = '';
@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
     PageNumber: 1,
     PageSize: 10,
     ToSearch: '',
-    ArrangeFor: 'comp_id',
+    ArrangeFor: 'id',
     Arrange: 'ASC'
   };
 
@@ -47,7 +47,20 @@ export class DashboardComponent implements OnInit {
               private memberService: MemberService,
               public jwtHelper: JwtHelperService,
               private modalService: BsModalService) { }
+  
+  OnChanges(clearSearch: boolean) {
 
+    this.compToSearch.ToSearch = '';
+    this.compToSearch.PageNumber = 1;
+    this.compToSearch.PageSize = 10;
+    this.compToSearch.ToSearch = '';
+    this.compToSearch.ArrangeFor = 'id';
+    this.compToSearch.Arrange = 'ASC';
+    
+    this.getCompanies();
+    
+  }
+  
   ngOnInit() {
 
     if (!localStorage.getItem('token')) {
@@ -65,6 +78,19 @@ export class DashboardComponent implements OnInit {
 
     this.getCompanies();
 
+  }
+
+  deleteCompany(id) {
+
+    this.modalRef.hide();
+    this.companyService.deleteCompany(id).subscribe(
+      response => {
+        alertify.success('Recorded deleted');
+        this.getCompanies();
+      }, error => {
+        alertify.error('Error deleting the company');
+      }
+    );
   }
 
   clearConfirmedCompany() {
@@ -121,7 +147,12 @@ export class DashboardComponent implements OnInit {
   }
 
   navigateToEdit(comp: CompanyToList) {
-    this.router.navigate(['/company', comp.comp_id]);
+    this.router.navigate(['/company', comp.id]);
+  }
+
+  navigateToAdd() {
+    this.router.navigate(['/add-company']);
+    this.getCompanies();
   }
 
   openModal(template: TemplateRef<any>) {
@@ -194,6 +225,9 @@ export class DashboardComponent implements OnInit {
         this.paging.PageSize = companies['paging']['PageSize'];
         this.paging.TotalPages = companies['paging']['TotalPages'];
 
+      },
+      error => {
+        alertify.error('Error: Network');
       }
 
     );

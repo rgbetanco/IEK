@@ -67,7 +67,7 @@
 
           <div class="form-group">
             <label for="inputExtraURL">粉絲專頁(FB)</label>
-            <input type="text" class="form-control" id="inputExtraURL" name="extraUrl" placeholder="" value="{{companyToEdit?.comp_extraUrl}}" [(ngModel)]="companyToEdit.comp_extraUrl" >
+            <input type="text" class="form-control" id="inputExtraURL" name="extraUrl" placeholder="" value="{{companyToEdit?.comp_extra_url}}" [(ngModel)]="companyToEdit.comp_extra_url" >
           </div>
           <div class="form-group">
             <label for="inputTags">標籤(Yourator)</label>
@@ -85,7 +85,7 @@
                 <tab heading="媒體報導">
                     <div class="form-group">
                         <label for="inputMediaReport"></label>
-                        <textarea rows="10" cols="10" class="form-control" id="inputMediaReport" name="mediareport" placeholder="" value="{{companyToEdit?.comp_mediaReport}}" [(ngModel)]="companyToEdit.comp_mediaReport" ></textarea>
+                        <textarea rows="10" cols="10" class="form-control" id="inputMediaReport" name="mediareport" placeholder="" value="{{companyToEdit?.comp_media_report}}" [(ngModel)]="companyToEdit.comp_media_report" ></textarea>
                     </div>
                 </tab>
                 <tab heading="主要商品/服務項目">
@@ -94,6 +94,12 @@
                         <textarea rows="10" cols="10" class="form-control" id="inputBusiness" name="business" placeholder="" value="{{companyToEdit?.comp_business}}" [(ngModel)]="companyToEdit.comp_business" ></textarea>
                     </div>
                 </tab>
+                <tab heading="關鍵字">
+                  <div class="form-group">
+                      <label for="inputKeyword"></label>
+                      <textarea rows="10" cols="10" class="form-control" id="inputKeyword" name="keyword" placeholder="" value="{{companyToEdit?.comp_keyword}}" [(ngModel)]="companyToEdit.comp_keyword" ></textarea>
+                  </div>
+              </tab>
               </tabset>
             </div>
             
@@ -112,7 +118,7 @@
         <div class="modal-body">
 
           <div class="alert alert-dark m-2" role="alert">
-            <strong>編號</strong> : {{companyToEdit.comp_id}}
+            <strong>編號</strong> : {{companyToEdit.id}}
           </div>
 
           <div class="alert alert-dark m-2" role="alert">
@@ -156,7 +162,7 @@
           </div>
 
           <div class="alert alert-dark m-2" role="alert">
-              <strong>粉絲專頁(FB)</strong> : {{companyToEdit.comp_extraUrl}}
+              <strong>粉絲專頁(FB)</strong> : {{companyToEdit.comp_extra_url}}
           </div>
 
           <div class="alert alert-dark m-2" role="alert">
@@ -177,7 +183,7 @@
               媒體報導
             </div>
             <div class="card-body">
-                {{companyToEdit.comp_mediaReport}}
+                {{companyToEdit.comp_media_report}}
             </div>
           </div>
 
@@ -187,6 +193,15 @@
             </div>
             <div class="card-body">
                 {{companyToEdit.comp_business}}
+            </div>
+          </div>
+
+          <div class="card m-2 border-info">
+            <div class="card-header">
+              關鍵字
+            </div>
+            <div class="card-body">
+                {{companyToEdit.comp_keyword}}
             </div>
           </div>
 

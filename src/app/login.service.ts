@@ -4,14 +4,14 @@ import { Observable } from 'rxjs';
 import { Login } from './login';
 import { catchError, tap, map } from 'rxjs/operators';
 import { UserToLogin } from './userToLogin';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  // private loginUrl = 'http://rgbetanco.net:8082/user/signin';
-  private loginUrl = 'http://34.192.48.45:5000/user/signin';
+  private loginUrl = environment.loginURL;
 
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})

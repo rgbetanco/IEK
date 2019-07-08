@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { CompanyService } from '../company.service';
 import { CompanyToList } from '../CompanyToList';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
+declare let alertify: any;
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -26,7 +26,7 @@ export class CompanyComponent implements OnInit {
   company_id: number;
 
   companyToEdit: CompanyToList = {
-    comp_id: '0',
+    id: '0',
     comp_banno: '0',
     comp_industry: '',
     comp_location: '',
@@ -36,16 +36,18 @@ export class CompanyComponent implements OnInit {
     comp_fax: '',
     comp_url: '',
     comp_amount: '',
-    comp_extraUrl: '',
+    comp_extra_url: '',
     comp_employee: '',
     comp_contact: '',
     comp_tag: '',
     comp_desc: '',
-    comp_mediaReport: '',
+    comp_media_report: '',
     comp_business: '',
     comp_createdate: '',
     done: '0',
-    confirmed: 0
+    confirmed: 0,
+    comp_keyword: '',
+    extra:''
   };
 
   constructor ( private activatedRoute: ActivatedRoute,
@@ -86,11 +88,8 @@ export class CompanyComponent implements OnInit {
   getCompany() {
 
     this.compService.getCompany(this.company_id).subscribe (
-
       company => {
-
-        this.companyToEdit =  <CompanyToList>company[0];
-
+         this.companyToEdit =  <CompanyToList>company[0];
       }
 
     );
@@ -119,14 +118,12 @@ export class CompanyComponent implements OnInit {
 
         }
 
+      },
+      error => {
+        alertify.error('Error: Network or possibly duplicated record');
       }
 
     );
 
   }
-
-  // ngOnDestroy() {
-  //   this.subscription.unsubscribe();
-  // }
-
 }

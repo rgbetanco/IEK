@@ -14,9 +14,9 @@
           <a class="nav-link" [routerLink]="membersLink">Members</a>
         </li> -->
       </ul>
-
+      
       <span class="nav-item">
-        <a class=" btn btn-outline-primary nav-link" [routerLink]="dashboardLink"><i class="fa fa-home"></i> 首頁 <span class="sr-only"></span></a>
+        <button class=" btn btn-outline-primary nav-link" (click)="navigateToDashboard()"><i class="fa fa-home"></i> 首頁 <span class="sr-only"></span></button>
       </span>
 
       <span class="nav-item" *ngIf="adminPermission == 1">

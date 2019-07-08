@@ -3,18 +3,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CompanyToSearch } from './CompanyToSearch';
 import { CompanyToList } from './CompanyToList';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
 
-  // private companyUrl = 'http://localhost:5000/company';
-  private companyUrl = 'http://34.192.48.45:5000/company';
+  private companyUrl = environment.companyURL;
 
   private httpOptions = {
 
     headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')})
+
+  };
+
+  private httpOptionsForDelete = {
+
+    headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token'), 'Content-type':'application/x-www-form-urlencoded'})
 
   };
 
@@ -48,9 +54,26 @@ export class CompanyService {
 
   getCompany(comp_id: number): Observable<any> {
 
-    const url = this.companyUrl + '?comp_id=' + comp_id;
+    const url = this.companyUrl + '?id=' + comp_id;
 
     return this.http.get<any>(url, this.httpOptions);
+
+  }
+
+  addCompany(c: CompanyToList): Observable<any>{
+    
+    const url = this.companyUrl + '/add';
+
+    return this.http.post<any>(url, c, this.httpOptions);
+
+  }
+
+  deleteCompany(id: number): Observable<any>{
+    
+    const url = this.companyUrl + '/delete';
+    const param = 'id=' + id;
+
+    return this.http.post<any>(url, param, this.httpOptionsForDelete);
 
   }
 

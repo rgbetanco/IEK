@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MemberToList } from './MemberToList';
 import { MemberToRegister } from './MemberToRegister';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { MemberToRegister } from './MemberToRegister';
 export class MemberService {
 
   // private memberUrl = 'http://rgbetanco.net:8082/user';
-  private memberUrl = 'http://34.192.48.45:5000/user';
+  private memberUrl = environment.memberURL;
 
   private httpOptions = {
 

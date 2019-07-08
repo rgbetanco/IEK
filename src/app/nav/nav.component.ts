@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -8,6 +8,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+
+  @Output() clearSearch = new EventEmitter<boolean>();
 
   decodedData = '';
   adminPermission = 0;
@@ -20,6 +22,7 @@ export class NavComponent implements OnInit {
   constructor(private router: Router, public jwtHelper: JwtHelperService) { }
 
   ngOnInit() {
+
     this.decodedData = this.jwtHelper.decodeToken(localStorage.getItem('token'));
     if (this.decodedData['data']['permission'] > 807) {
       this.adminPermission = 1;
@@ -30,6 +33,13 @@ export class NavComponent implements OnInit {
     }
 
     this.userEmail = this.decodedData['data']['email'];
+
+  }
+
+  navigateToDashboard() {
+
+    this.clearSearch.emit(true);
+    this.router.navigate([this.dashboardLink]);
 
   }
 
