@@ -150,6 +150,11 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/company', comp.id]);
   }
 
+  navigateToFunding(id) {
+    console.log(id);
+    this.router.navigate(['/funding', id]);
+  }
+
   navigateToAdd() {
     this.router.navigate(['/add-company']);
     this.getCompanies();

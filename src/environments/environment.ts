@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   companyURL: 'http://127.0.0.1:5000/company',
   memberURL: 'http://127.0.0.1:5000/user',
-  loginURL: 'http://127.0.0.1:5000/user/signin'
+  loginURL: 'http://127.0.0.1:5000/user/signin',
+  fundingURL: 'http://127.0.0.1:5000/funding'
 };
 
 /*

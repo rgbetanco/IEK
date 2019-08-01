@@ -1,0 +1,317 @@
+<app-nav></app-nav>
+<table class="table table-hover table-sm">
+  <thead class="thead-dark">
+    <tr>
+      <!-- ID -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'id'"
+        (click)="changeArrange('id')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          id<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          id<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'id'"
+        (click)="changeArrange('id')">
+        id <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- COMPANY NAME -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'company_name'"
+        (click)="changeArrange('company_name')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          Company name<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          Company name<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'company_name'"
+        (click)="changeArrange('company_name')">
+        Company name <i class="fa fa-unsorted"></i>
+      </th>
+
+      <!-- COUNTRY CODE -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'country_code'"
+        (click)="changeArrange('country_code')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          Country code<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          Country code<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'country_code'"
+        (click)="changeArrange('country_code')">
+        Country code <i class="fa fa-unsorted"></i>
+      </th>
+
+      <!-- state_code -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'state_code'"
+        (click)="changeArrange('state_code')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          State code<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          State code<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'state_code'"
+        (click)="changeArrange('state_code')">
+        State code <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "region" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'region'"
+        (click)="changeArrange('region')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          Region<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          Region<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'region'"
+        (click)="changeArrange('region')">
+        Region <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "city" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'city'"
+        (click)="changeArrange('city')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          City<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          City<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'city'"
+        (click)="changeArrange('city')">
+        City <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "investment_type" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'investment_type'"
+        (click)="changeArrange('investment_type')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          investment type<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          investment type<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'investment_type'"
+        (click)="changeArrange('investment_type')">
+        investment type <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "announced_on" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'announced_on'"
+        (click)="changeArrange('announced_on')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          announced on<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          announced on<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'announced_on'"
+        (click)="changeArrange('announced_on')">
+        announced on <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "raised_amount_usd" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'raised_amount_usd'"
+        (click)="changeArrange('raised_amount_usd')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          Amount USD<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          Amount USD<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'raised_amount_usd'"
+        (click)="changeArrange('raised_amount_usd')">
+        Amount USD <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "raised_amount" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'raised_amount'"
+        (click)="changeArrange('raised_amount')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          raised_amount<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          raised_amount<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'raised_amount'"
+        (click)="changeArrange('raised_amount')">
+        raised_amount <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "raised_amount_currency_code" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col"
+        *ngIf="compToSearch.ArrangeFor === 'raised_amount_currency_code'"
+        (click)="changeArrange('raised_amount_currency_code')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          currency_code<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          currency_code<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col"
+        *ngIf="compToSearch.ArrangeFor !== 'raised_amount_currency_code'"
+        (click)="changeArrange('raised_amount_currency_code')">
+        currency_code <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "post_money" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'post_money'"
+        (click)="changeArrange('post_money')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          post_money<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          post_money<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'post_money'"
+        (click)="changeArrange('post_money')">
+        post_money <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "post_money_currency_code" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col"
+        *ngIf="compToSearch.ArrangeFor === 'post_money_currency_code'"
+        (click)="changeArrange('post_money_currency_code')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          currency_code<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          currency_code<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col"
+        *ngIf="compToSearch.ArrangeFor !== 'post_money_currency_code'"
+        (click)="changeArrange('post_money_currency_code')">
+        currency_code <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "investor_count" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'investor_count'"
+        (click)="changeArrange('investor_count')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          investor_count<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          investor_count<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'investor_count'"
+        (click)="changeArrange('investor_count')">
+        investor_count <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "investor_names" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'investor_names'"
+        (click)="changeArrange('investor_names')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          investor_names<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          investor_names<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'investor_names'"
+        (click)="changeArrange('investor_names')">
+        investor_names <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "created" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'created'"
+        (click)="changeArrange('created')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          created<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          created<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'created'"
+        (click)="changeArrange('created')">
+        announced on <i class="fa fa-unsorted"></i>
+      </th>
+      <!-- "updated" -->
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'updated'"
+        (click)="changeArrange('updated')">
+        <span *ngIf="compToSearch.Arrange === 'ASC'">
+          updated<i class="fa fa-sort-asc ml-1"></i>
+        </span>
+        <span *ngIf="compToSearch.Arrange === 'DESC'">
+          updated<i class="fa fa-sort-desc ml-1"></i>
+        </span>
+      </th>
+      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'updated'"
+        (click)="changeArrange('updated')">
+        updated <i class="fa fa-unsorted"></i>
+      </th>
+      <th class="text-center centered-th mx-auto p-2 perc15" scope="col" colspan=2>
+        Actions
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let list of fundingToList">
+      <td>{{list.id}}</td>
+      <td>{{list.company_name}}</td>
+      <td>{{list.country_code}}</td>
+      <td>{{list.state_code}}</td>
+      <td>{{list.region}}</td>
+      <td>{{list.city}}</td>
+      <td>{{list.investment_type}}</td>
+      <td>{{list.announced_on}}</td>
+      <td>{{list.raised_amount_usd}}</td>
+      <td>{{list.raised_amount}}</td>
+      <td>{{list.raised_amount_currency_code}}</td>
+      <td>{{list.post_money}}</td>
+      <td>{{list.post_money_currency_code}}</td>
+      <td>{{list.investor_count}}</td>
+      <td>{{list.investor_names}}</td>
+      <td>{{list.created}}</td>
+      <td>{{list.updated}}</td>
+      <td class="text-center">
+        <button class="btn btn-outline-primary" tooltip="編輯" (click)="navigateToEdit(list)"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-outline-danger ml-2" tooltip="刪除" (click)="openModal(confirmDelete)"><i class="fa fa-remove"></i></button>
+      </td>
+
+      <!-- MODALS -->
+
+      <ng-template #confirmDelete>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">刪除公司</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          請再次確認該筆資料是否正確？
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" (click)="deleteFunding(list.id)"><i class="fa fa-send"></i> 確認</button>
+        </div>
+      </ng-template>
+
+
+    </tr>
+  </tbody>
+</table>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-10">
+      <pagination [boundaryLinks]="true" [totalItems]="paging.TotalCount" [(ngModel)]="paging.CurrentPage" [maxSize]=10
+        (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+        lastText="{{paging.TotalPages}} &raquo;">
+      </pagination>
+    </div>
+    <div class="col col-lg-2">
+      <div class="form-group form-inline ml-2">
+        <input class="form-control form-control-sm col-md-4" type="text" name="newpage" placeholder="Go to page"
+          [(ngModel)]="gotopage">
+        <button class="form-control form-control-sm btn btn-outline-primary ml-2" (click)="goToPage()"> <i
+            class="fa fa-search"></i> 提交</button>
+      </div>
+    </div>
+  </div>
+</div>

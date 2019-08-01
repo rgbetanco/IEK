@@ -17,6 +17,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TooltipModule } from 'ngx-bootstrap';
 import { MemberComponent } from './member/member.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
+import { FundingComponent } from './funding/funding.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -30,7 +31,8 @@ export function tokenGetter() {
       NavComponent,
       CompanyComponent,
       MemberComponent,
-      AddCompanyComponent
+      AddCompanyComponent,
+      FundingComponent
    ],
    imports: [
       BrowserModule,

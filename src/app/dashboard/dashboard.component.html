@@ -104,9 +104,10 @@
           <td class="text-center">
 
             <button type="button" class="btn btn-outline-info mr-2" tooltip="展開" (click)="openModal(template)"><i class="fa fa-folder-open-o"></i></button>
+            <button type="button" class="btn btn-outline-success mr-2" tooltip="募資" (click)="navigateToFunding(list.id)"><i class="fa fa-money"></i></button>
             <span *ngIf="writePermission > 0 || adminPermission > 0">
             <button class="btn btn-outline-primary" tooltip="編輯" (click)="navigateToEdit(list)"><i class="fa fa-edit"></i></button>
-            <button class="btn btn-outline-success ml-2" tooltip="送出" (click)="openModal(confirmSend)"><i class="fa fa-send"></i></button>
+            <button class="btn btn-outline-warning ml-2" tooltip="送出" (click)="openModal(confirmSend)"><i class="fa fa-send"></i></button>
             <button class="btn btn-outline-danger ml-2" tooltip="刪除" (click)="openModal(confirmDelete)"><i class="fa fa-remove"></i></button>
             </span>
           </td>
@@ -140,7 +141,7 @@
                 <button class="btn btn-danger" (click)="deleteCompany(list.id)"><i class="fa fa-send"></i> 確認</button>
               </div>
             </ng-template>
-
+          
           <ng-template #template>
               <div class="modal-header">
                 <h4 class="modal-title pull-left">{{list.comp_name}}</h4>
