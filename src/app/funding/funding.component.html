@@ -1,4 +1,7 @@
 <app-nav></app-nav>
+<div *ngIf="compToSearch.ToSearch != '0'">
+  <button class="btn btn-outline-danger" style="margin: 10px" tooltip="加入新投資" (click)="navigateToAddFunding(compToSearch.ToSearch)"><i class="fa fa-plus"> 加入新投資</i></button>
+</div>
 <table class="table table-hover table-sm">
   <thead class="thead-dark">
     <tr>
@@ -31,20 +34,6 @@
         公司名稱 <i class="fa fa-unsorted"></i>
       </th>
 
-      <!-- Address -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'address'"
-        (click)="changeArrange('address')">
-        <span *ngIf="compToSearch.Arrange === 'ASC'">
-          地區<i class="fa fa-sort-asc ml-1"></i>
-        </span>
-        <span *ngIf="compToSearch.Arrange === 'DESC'">
-          地區<i class="fa fa-sort-desc ml-1"></i>
-        </span>
-      </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'address'"
-        (click)="changeArrange('address')">
-        地區 <i class="fa fa-unsorted"></i>
-      </th>
       <!-- "investment_type" -->
       <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'investment_type'"
         (click)="changeArrange('investment_type')">
@@ -190,49 +179,8 @@
       <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'investor_names'"
         (click)="changeArrange('investor_names')">
         投資者名稱 <i class="fa fa-unsorted"></i>
-      </th>
-      <!-- url -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'url'"
-        (click)="changeArrange('url')">
-        <span *ngIf="compToSearch.Arrange === 'ASC'">
-          新聞連結<i class="fa fa-sort-asc ml-1"></i>
-        </span>
-        <span *ngIf="compToSearch.Arrange === 'DESC'">
-          新聞連結<i class="fa fa-sort-desc ml-1"></i>
-        </span>
-      </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'url'"
-        (click)="changeArrange('url')">
-        新聞連結 <i class="fa fa-unsorted"></i>
-      </th>
-      <!-- "created" -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'created'"
-        (click)="changeArrange('created')">
-        <span *ngIf="compToSearch.Arrange === 'ASC'">
-          資料建立日期<i class="fa fa-sort-asc ml-1"></i>
-        </span>
-        <span *ngIf="compToSearch.Arrange === 'DESC'">
-          資料建立日期<i class="fa fa-sort-desc ml-1"></i>
-        </span>
-      </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'created'"
-        (click)="changeArrange('created')">
-        資料建立日期 <i class="fa fa-unsorted"></i>
-      </th>
-      <!-- "updated" -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'updated'"
-        (click)="changeArrange('updated')">
-        <span *ngIf="compToSearch.Arrange === 'ASC'">
-          上次資料日期<i class="fa fa-sort-asc ml-1"></i>
-        </span>
-        <span *ngIf="compToSearch.Arrange === 'DESC'">
-          上次資料日期<i class="fa fa-sort-desc ml-1"></i>
-        </span>
-      </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'updated'"
-        (click)="changeArrange('updated')">
-        上次資料日期 <i class="fa fa-unsorted"></i>
-      </th>
+      </th>     
+
       <th class="text-center centered-th mx-auto p-2 perc15" scope="col" colspan=2>
         管理
       </th>
@@ -240,24 +188,21 @@
   </thead>
   <tbody>
     <tr *ngFor="let list of fundingToList">
-      <td>{{list.id}}</td>
-      <td>{{list.company_name}}</td>
-      <td>{{list.address}}</td>
-      <td>{{list.investment_type}}</td>
-      <td>{{list.announced_on}}</td>
-      <td>{{list.raised_amount}}</td>
-      <td>{{list.raised_currency_code}}</td>
-      <td>{{list.post_amount}}</td>
-      <td>{{list.post_currency_code}}</td>
-      <td>{{list.capital_sought_amount}}</td>
-      <td>{{list.capital_sought_currency_code}}</td>
-      <td>{{list.investor_count}}</td>
-      <td>{{list.investor_names}}</td>
-      <td>{{list.url}}</td>
-      <td>{{list.created}}</td>
-      <td>{{list.updated}}</td>
+      <td (click)="openModal(template)">{{list.id}}</td>
+      <td (click)="openModal(template)">{{list.company_name}}</td>
+      <td (click)="openModal(template)">{{list.investment_type}}</td>
+      <td (click)="openModal(template)">{{list.announced_on}}</td>
+      <td (click)="openModal(template)">{{list.raised_amount}}</td>
+      <td (click)="openModal(template)">{{list.raised_currency_code}}</td>
+      <td (click)="openModal(template)">{{list.post_amount}}</td>
+      <td (click)="openModal(template)">{{list.post_currency_code}}</td>
+      <td (click)="openModal(template)">{{list.capital_sought_amount}}</td>
+      <td (click)="openModal(template)">{{list.capital_sought_currency_code}}</td>
+      <td (click)="openModal(template)">{{list.investor_count}}</td>
+      <td (click)="openModal(template)">{{list.investor_names}}</td>
       <td class="text-center">
-        <button class="btn btn-outline-primary" tooltip="編輯" (click)="navigateToEdit(list)"><i class="fa fa-edit"></i></button>
+        <button type="button" class="btn btn-outline-info mr-2" tooltip="展開" (click)="openModal(template)"><i class="fa fa-folder-open-o"></i></button>
+        <button class="btn btn-outline-primary" tooltip="編輯" (click)="navigateToEditFunding(list.id)"><i class="fa fa-edit"></i></button>
         <button class="btn btn-outline-danger ml-2" tooltip="刪除" (click)="openModal(confirmDelete)"><i class="fa fa-remove"></i></button>
       </td>
 
@@ -278,6 +223,59 @@
         </div>
       </ng-template>
 
+      <ng-template #template>
+          <div class="modal-header">
+              <h4 class="modal-title pull-left">{{list.company_name}}</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-dark m-2" role="alert">
+                    <strong>編號</strong> : {{list.comp_id}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>公司名稱</strong> : {{list.company_name}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>地區</strong> : {{list.address}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>投資類型</strong> : {{list.investment_type}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>募資公佈日期</strong> : {{list.announced_on}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>已募得資金</strong> : {{list.raised_amount}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>募得資金幣別</strong> : {{list.raised_currency_code}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>交易後估值</strong> : {{list.post_amount}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>交易後估值幣別</strong> : {{list.post_currency_code}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>預募得資金</strong> : {{list.capital_sought_amount}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>預募得資金幣別</strong> : {{list.capital_sought_currency_code}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>投資者數目</strong> : {{list.investor_count}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>投資者名稱</strong> : {{list.investor_names}}
+                  </div>
+                  <div class="alert alert-dark m-2" role="alert">
+                      <strong>新聞連結</strong> : {{list.url}}
+                  </div>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()"></button>
+            </div>
+      </ng-template>
 
     </tr>
   </tbody>

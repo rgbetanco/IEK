@@ -1,0 +1,180 @@
+<app-nav></app-nav>
+
+<div class="container mt-3 mb-3">
+
+    <div *ngIf="error" class="alert alert-danger col-md-12" role="alert">
+        {{errorMessage}}
+    </div>
+
+    <form #companyForm="ngForm">
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="comp_id">統編</label>
+                <input type="text" class="form-control" id="comp_id" name="comp_id" placeholder=""
+                    value={{FundingToList?.comp_id}} [(ngModel)]="FundingToList.comp_id">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="inputName">公司名稱</label>
+                <input type="text" class="form-control" id="inputName" name="name" placeholder=""
+                    value={{FundingToList?.company_name}} [(ngModel)]="FundingToList.company_name">
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="address">地區</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder=""
+                    value={{FundingToList?.address}} [(ngModel)]="FundingToList.address">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="investment_type">投資類型</label>
+                <input type="text" class="form-control" id="investment_type" name="investment_type" placeholder=""
+                    value={{FundingToList?.investment_type}} [(ngModel)]="FundingToList.investment_type">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="announced_on">募資公佈日期</label>
+                <input type="text" class="form-control" id="announced_on" name="announced_on" placeholder=""
+                    value={{FundingToList?.announced_on}} [(ngModel)]="FundingToList.announced_on">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="raised_amount">已募得資金</label>
+                <input type="text" class="form-control" id="raised_amount" name="raised_amount" placeholder=""
+                    value={{FundingToList?.raised_amount}} [(ngModel)]="FundingToList.raised_amount">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="raised_currency_code">募得資金幣別</label>
+                <input type="text" class="form-control" id="raised_currency_code" name="raised_currency_code"
+                    placeholder="" value={{FundingToList?.raised_currency_code}}
+                    [(ngModel)]="FundingToList.raised_currency_code">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="post_amount">交易後估值</label>
+                <input type="text" class="form-control" id="post_amount" name="post_amount" placeholder=""
+                    value={{FundingToList?.post_amount}} [(ngModel)]="FundingToList.post_amount">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="post_currency_code">交易後估值幣別</label>
+                <input type="text" class="form-control" id="post_currency_code" name="post_currency_code" placeholder=""
+                    value={{FundingToList?.post_currency_code}} [(ngModel)]="FundingToList.post_currency_code">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="capital_sought_amount">預募得資金</label>
+                <input type="text" class="form-control" id="capital_sought_amount" name="capital_sought_amount"
+                    placeholder="" value={{FundingToList?.capital_sought_amount}}
+                    [(ngModel)]="FundingToList.capital_sought_amount">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="capital_sought_currency_code">預募得資金幣別</label>
+                <input type="text" class="form-control" id="capital_sought_currency_code"
+                    name="capital_sought_currency_code" placeholder=""
+                    value={{FundingToList?.capital_sought_currency_code}}
+                    [(ngModel)]="FundingToList.capital_sought_currency_code">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="investor_count">投資者數目</label>
+                <input type="text" class="form-control" id="investor_count" name="investor_count" placeholder=""
+                    value={{FundingToList?.investor_count}} [(ngModel)]="FundingToList.investor_count">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="investor_names">投資者名稱</label>
+                <input type="text" class="form-control" id="investor_names" name="investor_names" placeholder=""
+                    value={{FundingToList?.investor_names}} [(ngModel)]="FundingToList.investor_names">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="url">新聞連結</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="" value={{FundingToList?.url}}
+                    [(ngModel)]="FundingToList.url">
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" (click)="openModal(template)">確認<i
+                class="	fa fa-check-circle-o ml-2"></i></button>
+        <button class="btn btn-danger ml-2" (click)="goBack()">返回<i class="fa fa-history ml-2"></i></button>
+
+    </form>
+
+    <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">{{FundingToList.company_name}}</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>編號</strong> : {{FundingToList.comp_id}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>公司名稱</strong> : {{FundingToList.company_name}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>地區</strong> : {{FundingToList.address}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>投資類型</strong> : {{FundingToList.investment_type}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>募資公佈日期</strong> : {{FundingToList.announced_on}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>已募得資金</strong> : {{FundingToList.raised_amount}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>募得資金幣別</strong> : {{FundingToList.raised_currency_code}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>交易後估值</strong> : {{FundingToList.post_amount}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>交易後估值幣別</strong> : {{FundingToList.post_currency_code}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>預募得資金</strong> : {{FundingToList.capital_sought_amount}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>預募得資金幣別</strong> : {{FundingToList.capital_sought_currency_code}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>投資者數目</strong> : {{FundingToList.investor_count}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>投資者名稱</strong> : {{FundingToList.investor_names}}
+            </div>
+            <div class="alert alert-dark m-2" role="alert">
+                <strong>新聞連結</strong> : {{FundingToList.url}}
+            </div>
+            <button class="btn btn-danger ml-2" (click)="actionFunding()">發送<i class="fa fa-send ml-2"></i></button>
+        </div>
+    </ng-template>
+
+</div>

@@ -62,6 +62,18 @@ export class FundingComponent implements OnInit {
 
   }
 
+  navigateToEditFunding(id) {
+
+    this.router.navigate(['/edit/funding', id, 'type', 0]);
+
+  }
+
+  navigateToAddFunding(id) {
+
+    this.router.navigate(['/edit/funding', id, 'type', 1]);
+
+  }
+
   pageChanged(event: any): void {
 
     if (event.page <= this.paging.TotalCount) {
@@ -102,22 +114,14 @@ export class FundingComponent implements OnInit {
   }
 
   deleteFunding(id) {
-
-    this.modalRef.hide();
-    console.log("ready to add delete service");
-    // this.companyService.deleteCompany(id).subscribe(
-    //   response => {
-    //     alertify.success('Recorded deleted');
-    //     this.getCompanies();
-    //   }, error => {
-    //     alertify.error('Error deleting the company');
-    //   }
-    // );
-  }
-
-  navigateToEdit(comp: FundingToList) {
-    console.log("ready to create funding edit component")
-    //this.router.navigate(['/company', comp.id]);
+      this.fundingService.deleteFunding(id).subscribe(
+        returned => {
+          if (returned['r'] === 0) {
+            this.modalRef.hide();
+            this.getFunding();
+          }
+        }
+      );
   }
 
   getFunding() {

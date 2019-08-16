@@ -6,7 +6,8 @@
     <span *ngIf="writePermission > 0 || adminPermission > 0">
       <button class="btn btn-outline-danger mb-2 mr-sm-2" (click)="openModal(clearConfirmed)">重置確認狀態</button>
     </span>
-    <button class="btn btn-outline-danger mb-2" tooltip="加新" (click)="navigateToAdd()">加入新公司</button>
+    <button class="btn btn-outline-danger mb-2 mr-sm-2" tooltip="加新" (click)="navigateToAdd()">加入新公司</button>
+    <button class="btn btn-outline-danger mb-2" tooltip="找不到公司" (click)="navigateToFunding(0)">找不到公司</button>
 </form>
 
 <ng-template #clearConfirmed>

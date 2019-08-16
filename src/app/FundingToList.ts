@@ -1,6 +1,7 @@
 export interface FundingToList {
     id: string;
-    comp_id: string;
+    article_id: string;
+    comp_id: number;
     company_name: string;
     address: string;
     investment_type: string;

@@ -82,7 +82,6 @@ export class CompanyComponent implements OnInit {
       }
 
     );
-
   }
 
   getCompany() {

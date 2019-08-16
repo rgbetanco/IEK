@@ -29,4 +29,30 @@ export class FundingService {
     return this.http.get<any>(url, this.httpOptions);
 
   }
+
+  getFundingById(Id: number): Observable<any> {
+
+    const url = this.fundingUrl + '?id=' + Id;
+    return this.http.get<any>(url, this.httpOptions);
+
+  }
+
+  editFunding(comp: FundingToList): Observable<any> {
+    
+    return this.http.post<any>(this.fundingUrl+'/edit', comp, this.httpOptions);
+
+  }
+
+  addFunding(comp: FundingToList): Observable<any> {
+
+    return this.http.post<any>(this.fundingUrl + '/add', comp, this.httpOptions);
+    
+  }
+
+  deleteFunding(id: number): Observable<any> {
+
+    var a = { id: id};
+    return this.http.post<any>(this.fundingUrl + '/delete', a, this.httpOptions);
+
+  }
 }

@@ -151,7 +151,6 @@ export class DashboardComponent implements OnInit {
   }
 
   navigateToFunding(id) {
-    console.log(id);
     this.router.navigate(['/funding', id]);
   }
 

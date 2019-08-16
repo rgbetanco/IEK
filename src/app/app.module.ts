@@ -18,6 +18,7 @@ import { TooltipModule } from 'ngx-bootstrap';
 import { MemberComponent } from './member/member.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { FundingComponent } from './funding/funding.component';
+import { EditFundingComponent } from './edit-funding/edit-funding.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -32,7 +33,8 @@ export function tokenGetter() {
       CompanyComponent,
       MemberComponent,
       AddCompanyComponent,
-      FundingComponent
+      FundingComponent,
+      EditFundingComponent
    ],
    imports: [
       BrowserModule,
