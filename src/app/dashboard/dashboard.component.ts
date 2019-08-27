@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, OnChanges } from '@angular/core';
+import { Component, OnInit, TemplateRef, OnChanges, SystemJsNgModuleLoader } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyService } from '../company.service';
 import { CompanyToSearch } from '../CompanyToSearch';
@@ -7,6 +7,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Paging } from '../Paging';
 import { MemberService } from '../member.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
 declare let alertify: any;
 
 @Component({
