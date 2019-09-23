@@ -1,13 +1,13 @@
 <app-nav (clearSearch)="OnChanges($event)"></app-nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col col-1" style="background-color: rgb(182, 182, 182)">
-      <div style="color: honeydew">Menu</div>
+    <div class="col col-2" style="background-color: rgb(182, 182, 182)">
+      <div style="color: rgb(3, 124, 3)">Menu</div>
       <div style="color:honeydew"><a (click)=false>公司基本資料管理</a></div>
-      <div style="color: honeydew">募資紀錄管理</div>
-      <div style="color: blue; cursor: pointer;"><a (click)="navigateToFunding(0)">找不到公司</a></div>
+      <div style="color: rgba(42, 42, 233, 0.673); cursor: pointer;"><a (click)="navigateToFunding(-1)">募資紀錄管理</a></div>
+      <div style="color: rgba(42, 42, 233, 0.673); cursor: pointer;"><a (click)="navigateToFunding(0)">找不到公司</a></div>
     </div>
-    <div class="col col-11">
+    <div class="col col-10">
       <form class="form-inline mt-2">
         <input class="form-control mb-2 mr-sm-2 col-md-6" type="search"
           placeholder="篩選條件：統編、公司名稱、產業類別、公司地區、標籤、公司簡介、媒體報導、主要商品/服務項目" name="toSearch" aria-label="Search"
@@ -296,20 +296,20 @@
 </div>
 
 <div class="container" style="margin-top: 25px">
-    <div class="row">
-      <div class="col col-lg-10">
-        <pagination [boundaryLinks]="true" [totalItems]="paging.TotalCount" [(ngModel)]="paging.CurrentPage"
-          [maxSize]=10 (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;"
-          firstText="&laquo;" lastText="{{paging.TotalPages}} &raquo;">
-        </pagination>
-      </div>
-      <div class="col col-lg-2">
-        <div class="form-group form-inline ml-2">
-          <input class="form-control form-control-sm col-md-4" type="text" name="newpage" placeholder="Go to page"
-            [(ngModel)]="gotopage">
-          <button class="form-control form-control-sm btn btn-outline-primary ml-2" (click)="goToPage()"> <i
-              class="fa fa-search"></i> 提交</button>
-        </div>
+  <div class="row">
+    <div class="col col-lg-10">
+      <pagination [boundaryLinks]="true" [totalItems]="paging.TotalCount" [(ngModel)]="paging.CurrentPage" [maxSize]=10
+        (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+        lastText="{{paging.TotalPages}} &raquo;">
+      </pagination>
+    </div>
+    <div class="col col-lg-2">
+      <div class="form-group form-inline ml-2">
+        <input class="form-control form-control-sm col-md-4" type="text" name="newpage" placeholder="Go to page"
+          [(ngModel)]="gotopage">
+        <button class="form-control form-control-sm btn btn-outline-primary ml-2" (click)="goToPage()"> <i
+            class="fa fa-search"></i> 提交</button>
       </div>
     </div>
+  </div>
 </div>

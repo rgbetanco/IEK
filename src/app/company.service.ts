@@ -26,6 +26,10 @@ export class CompanyService {
 
   constructor(private http: HttpClient) { }
 
+  generateCompanyId() {
+    return 'Y'+ Math.floor(Math.random()*(1111111 - 9999999 + 1)+9999999);
+  }
+
   listCompany(comp: CompanyToSearch): Observable<any> {
 
     const url = this.companyUrl + '/list?PageNumber=' + comp.PageNumber +

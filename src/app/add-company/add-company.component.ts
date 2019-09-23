@@ -52,6 +52,10 @@ export class AddCompanyComponent implements OnInit {
 
   }
 
+  generateCompanyId() {
+    this.companyToAdd.comp_banno = this.compService.generateCompanyId();
+  }
+
   addCompany() {
 
     this.compService.addCompany(this.companyToAdd).subscribe(

@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 
-<div *ngIf="compToSearch.ToSearch != '0'">
+<div *ngIf="compToSearch.ToSearch > '0'">
   <button class="btn btn-outline-danger" style="margin: 10px" tooltip="加入新投資"
     (click)="navigateToAddFunding(compToSearch.ToSearch)"><i class="fa fa-plus"> 加入新投資</i></button>
 </div>
@@ -8,8 +8,7 @@
   <thead class="thead-dark">
     <tr>
       <!-- ID -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'id'"
-        (click)="changeArrange('id')">
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor === 'id'" (click)="changeArrange('id')">
         <span *ngIf="compToSearch.Arrange === 'ASC'">
           id<i class="fa fa-sort-asc ml-1"></i>
         </span>
@@ -17,13 +16,12 @@
           id<i class="fa fa-sort-desc ml-1"></i>
         </span>
       </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'id'"
-        (click)="changeArrange('id')">
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor !== 'id'" (click)="changeArrange('id')">
         id <i class="fa fa-unsorted"></i>
       </th>
       <!-- COMPANY NAME -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'company_name'"
-        (click)="changeArrange('company_name')">
+      <th class="centered-th" style="word-wrap: break-word; max-width: 30%;" scope="col"
+        *ngIf="compToSearch.ArrangeFor === 'company_name'" (click)="changeArrange('company_name')">
         <span *ngIf="compToSearch.Arrange === 'ASC'">
           公司名稱<i class="fa fa-sort-asc ml-1"></i>
         </span>
@@ -31,13 +29,13 @@
           公司名稱<i class="fa fa-sort-desc ml-1"></i>
         </span>
       </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'company_name'"
-        (click)="changeArrange('company_name')">
+      <th class="centered-th" style="word-wrap: break-word; max-width: 30%;" scope="col"
+        *ngIf="compToSearch.ArrangeFor !== 'company_name'" (click)="changeArrange('company_name')">
         公司名稱 <i class="fa fa-unsorted"></i>
       </th>
 
       <!-- "investment_type" -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'investment_type'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor === 'investment_type'"
         (click)="changeArrange('investment_type')">
         <span *ngIf="compToSearch.Arrange === 'ASC'">
           投資類型<i class="fa fa-sort-asc ml-1"></i>
@@ -46,12 +44,12 @@
           投資類型<i class="fa fa-sort-desc ml-1"></i>
         </span>
       </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'investment_type'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor !== 'investment_type'"
         (click)="changeArrange('investment_type')">
         投資類型 <i class="fa fa-unsorted"></i>
       </th>
       <!-- "announced_on" -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'announced_on'"
+      <!-- <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor === 'announced_on'"
         (click)="changeArrange('announced_on')">
         <span *ngIf="compToSearch.Arrange === 'ASC'">
           募資公佈日期<i class="fa fa-sort-asc ml-1"></i>
@@ -60,12 +58,12 @@
           募資公佈日期<i class="fa fa-sort-desc ml-1"></i>
         </span>
       </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'announced_on'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor !== 'announced_on'"
         (click)="changeArrange('announced_on')">
         募資公佈日期 <i class="fa fa-unsorted"></i>
-      </th>
+      </th> -->
       <!-- "raised_amount" -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'raised_amount'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor === 'raised_amount'"
         (click)="changeArrange('raised_amount')">
         <span *ngIf="compToSearch.Arrange === 'ASC'">
           已募得資金<i class="fa fa-sort-asc ml-1"></i>
@@ -74,12 +72,12 @@
           已募得資金<i class="fa fa-sort-desc ml-1"></i>
         </span>
       </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'raised_amount'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor !== 'raised_amount'"
         (click)="changeArrange('raised_amount')">
         已募得資金 <i class="fa fa-unsorted"></i>
       </th>
       <!-- "raised_currency_code" -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'raised_currency_code'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor === 'raised_currency_code'"
         (click)="changeArrange('raised_currency_code')">
         <span *ngIf="compToSearch.Arrange === 'ASC'">
           募得資金幣別<i class="fa fa-sort-asc ml-1"></i>
@@ -88,12 +86,12 @@
           募得資金幣別<i class="fa fa-sort-desc ml-1"></i>
         </span>
       </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'raised_currency_code'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor !== 'raised_currency_code'"
         (click)="changeArrange('raised_currency_code')">
         募得資金幣別 <i class="fa fa-unsorted"></i>
       </th>
       <!-- "post_amount" -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'post_amount'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor === 'post_amount'"
         (click)="changeArrange('post_amount')">
         <span *ngIf="compToSearch.Arrange === 'ASC'">
           交易後估值<i class="fa fa-sort-asc ml-1"></i>
@@ -102,12 +100,12 @@
           交易後估值<i class="fa fa-sort-desc ml-1"></i>
         </span>
       </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'post_amount'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor !== 'post_amount'"
         (click)="changeArrange('post_amount')">
         交易後估值 <i class="fa fa-unsorted"></i>
       </th>
       <!-- "post_currency_code" -->
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor === 'post_currency_code'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor === 'post_currency_code'"
         (click)="changeArrange('post_currency_code')">
         <span *ngIf="compToSearch.Arrange === 'ASC'">
           交易後估值幣別<i class="fa fa-sort-asc ml-1"></i>
@@ -116,7 +114,7 @@
           交易後估值幣別<i class="fa fa-sort-desc ml-1"></i>
         </span>
       </th>
-      <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="compToSearch.ArrangeFor !== 'post_currency_code'"
+      <th class="centered-th" scope="col" *ngIf="compToSearch.ArrangeFor !== 'post_currency_code'"
         (click)="changeArrange('post_currency_code')">
         交易後估值幣別 <i class="fa fa-unsorted"></i>
       </th>
@@ -179,26 +177,26 @@
         投資者名稱 <i class="fa fa-unsorted"></i>
       </th> -->
 
-      <th class="text-center centered-th mx-auto p-2 perc15" scope="col" colspan=2>
+      <th class="text-center centered-th" scope="col">
         管理
       </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let list of fundingToList">
-      <td (click)="openModal(template)">{{list.id}}</td>
-      <td (click)="openModal(template)">{{list.company_name}}</td>
-      <td (click)="openModal(template)">{{list.investment_type}}</td>
-      <td (click)="openModal(template)">{{list.announced_on}}</td>
-      <td (click)="openModal(template)">{{list.raised_amount}}</td>
-      <td (click)="openModal(template)">{{list.raised_currency_code}}</td>
-      <td (click)="openModal(template)">{{list.post_amount}}</td>
-      <td (click)="openModal(template)">{{list.post_currency_code}}</td>
+      <td style="width: 5%;" (click)="openModal(template)">{{list.id}}</td>
+      <td style="word-wrap: break-word; width: 350px;" (click)="openModal(template)">{{list.company_name}}</td>
+      <td style="width: 70px;" (click)="openModal(template)">{{list.investment_type}}</td>
+      <!-- <td style="width: 70px;" (click)="openModal(template)">{{list.announced_on}}</td> -->
+      <td style="width: 10%;" (click)="openModal(template)">{{list.raised_amount}}</td>
+      <td style="width: 100px;" (click)="openModal(template)">{{list.raised_currency_code}}</td>
+      <td style="width: 10%;" (click)="openModal(template)">{{list.post_amount}}</td>
+      <td style="width: 100px;" (click)="openModal(template)">{{list.post_currency_code}}</td>
       <!-- <td (click)="openModal(template)">{{list.capital_sought_amount}}</td>
       <td (click)="openModal(template)">{{list.capital_sought_currency_code}}</td>
       <td (click)="openModal(template)">{{list.investor_count}}</td>
       <td (click)="openModal(template)">{{list.investor_names}}</td> -->
-      <td class="text-center">
+      <td style="width: 150px;" class="text-center">
         <button type="button" class="btn btn-outline-info mr-2" tooltip="展開" (click)="openModal(template)"><i
             class="fa fa-folder-open-o"></i></button>
         <button class="btn btn-outline-primary mr-2" tooltip="編輯" (click)="navigateToEditFunding(list.id)"><i
@@ -228,7 +226,7 @@
 
       <ng-template #template>
         <div class="modal-header">
-          <h4 class="modal-title pull-left">{{list.company_name}}</h4>
+          <h4 class="modal-title pull-left" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2">{{list.company_name}}</h4>
           <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
           </button>

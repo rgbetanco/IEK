@@ -9,12 +9,21 @@
     <form #companyForm="ngForm">
 
         <div class="form-row">
+            <button class="btn btn-outline-danger" tooltip="加新" (click)="openModal(companyAdd)">加入新公司</button>
+        </div>
+
+        <div class="form-row">
 
             <div class="form-group col-md-4">
-                <label for="comp_id">統編</label>
-                <input type="text" class="form-control" id="comp_id" name="comp_id" placeholder=""
-                    value={{FundingToList?.comp_id}} [(ngModel)]="FundingToList.comp_id">
+                <label for="comp_id">編號</label>
+                <div class="form-inline">
+                    <input type="text" class="form-control" id="comp_id" name="comp_id" placeholder=""
+                        value={{FundingToList?.comp_id}} [(ngModel)]="FundingToList.comp_id">
+                    <button id="comp_btn" name="comp_btn" class="btn btn-success ml-2"
+                        (click)="openModal(companySearch)">關鍵字<i class="fa fa-database ml-2"></i></button>
+                </div>
             </div>
+
             <div class="form-group col-md-8">
                 <label for="inputName">公司名稱</label>
                 <input type="text" class="form-control" id="inputName" name="name" placeholder=""
@@ -178,3 +187,53 @@
     </ng-template>
 
 </div>
+
+<!-- MODALS -->
+
+<ng-template #companyAdd>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">加入新公司</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="comp_banno">統編</label>
+                <div class="form-inline">
+                    <input type="text" class="form-control" id="comp_banno" name="comp_banno" placeholder=""
+                        value={{companyToAdd?.comp_banno}} [(ngModel)]="companyToAdd.comp_banno">
+                    <button class="btn btn-success ml-2" (click)="generateCompanyId()">隨機統編<i
+                            class="fa fa-cubes ml-2"></i></button>
+                </div>
+                <label for="inputName">公司名稱</label>
+                <input type="text" class="form-control" id="inputName" name="name" placeholder=""
+                    value={{companyToAdd?.comp_name}} [(ngModel)]="companyToAdd.comp_name">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger ml-2" (click)="modalRef.hide()">返回<i class="fa fa-history ml-2"></i></button>
+        <button class="btn btn-primary" (click)="addCompany()"><i class="fa fa-send"></i> 確認</button>
+    </div>
+</ng-template>
+
+<ng-template #companySearch>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">公司搜索</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="sr-only" for="inlineFormInputName">關鍵字</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName" placeholder="Keyword"
+                value={{compToSearch?.ToSearch}} [(ngModel)]="compToSearch.ToSearch">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" (click)="searchCompanyKeyword()"><i class="fa fa-send"></i> 確認</button>
+    </div>
+</ng-template>

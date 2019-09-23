@@ -12,8 +12,11 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="comp_banno">統編</label>
-        <input type="text" class="form-control" id="comp_banno" name="comp_banno" placeholder=""
-          value={{companyToAdd?.comp_banno}} [(ngModel)]="companyToAdd.comp_banno">
+        <div class="form-inline">
+          <input type="text" class="form-control" id="comp_banno" name="comp_banno" placeholder=""
+            value={{companyToAdd?.comp_banno}} [(ngModel)]="companyToAdd.comp_banno">
+            <button class="btn btn-success ml-2" (click)="generateCompanyId()">隨機統編<i class="fa fa-cubes ml-2"></i></button>
+        </div>
       </div>
       <div class="form-group col-md-8">
         <label for="inputName">公司名稱</label>
