@@ -1,14 +1,29 @@
 <app-nav (clearSearch)="OnChanges($event)"></app-nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col col-2" style="background-color: rgb(182, 182, 182)">
-      <div style="color: rgb(3, 124, 3)">Menu</div>
+    <div class="col col-2" *ngIf="showMenu" style="background-color: rgb(255, 254, 254)">
+
+            <accordion>
+                <accordion-group heading="新創公司簡介">
+                    <a href="#">待審資料</a><br>
+                    <a href="#">已審資料</a><br>
+                    <a href="#">未符合資料</a><br>
+                </accordion-group>
+                <accordion-group heading="幕資紀錄審查">
+                    <a href="#">待審資料</a><br>
+                    <a href="#">已審資料</a><br>
+                    <a (click)="navigateToFunding(0)">未符合資料</a><br>
+                </accordion-group>
+              </accordion>
+
+      <!-- <div style="color: rgb(3, 124, 3)"><a (click)="toggleMenu()">Menu</a></div>
       <div style="color:honeydew"><a (click)=false>公司基本資料管理</a></div>
       <div style="color: rgba(42, 42, 233, 0.673); cursor: pointer;"><a (click)="navigateToFunding(-1)">募資紀錄管理</a></div>
-      <div style="color: rgba(42, 42, 233, 0.673); cursor: pointer;"><a (click)="navigateToFunding(0)">找不到公司</a></div>
+      <div style="color: rgba(42, 42, 233, 0.673); cursor: pointer;"><a (click)="navigateToFunding(0)">找不到公司</a></div> -->
     </div>
-    <div class="col col-10">
+    <div class="col {{fullscreen}}">
       <form class="form-inline mt-2">
+        <button class="mb-2 mr-sm-2 btn btn-outline-info" (click)=toggleMenu()><i class="fa fa-bars"></i></button>
         <input class="form-control mb-2 mr-sm-2 col-md-6" type="search"
           placeholder="篩選條件：統編、公司名稱、產業類別、公司地區、標籤、公司簡介、媒體報導、主要商品/服務項目" name="toSearch" aria-label="Search"
           [(ngModel)]="compToSearch.ToSearch">

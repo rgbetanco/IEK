@@ -7,17 +7,26 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Paging } from '../Paging';
 import { MemberService } from '../member.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AccordionConfig } from 'ngx-bootstrap/accordion';
 
 declare let alertify: any;
+
+export function getAccordionConfig(): AccordionConfig {
+  return Object.assign(new AccordionConfig(), { closeOthers: true });
+}
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [{ provide: AccordionConfig, useFactory: getAccordionConfig }]
 })
 
 export class DashboardComponent implements OnInit {
   
+  fullscreen = "col-10"
+  showMenu = true
+
   writePermission = 0;
   adminPermission = 0;
   decodedData = '';
@@ -60,6 +69,16 @@ export class DashboardComponent implements OnInit {
     
     this.getCompanies();
     
+  }
+
+  toggleMenu() {
+    if (this.showMenu) {
+      this.showMenu = false
+      this.fullscreen = "col-12"
+    } else {
+      this.showMenu = true
+      this.fullscreen = "col-10"
+    }
   }
   
   ngOnInit() {

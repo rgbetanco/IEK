@@ -20,6 +20,9 @@ import { MemberComponent } from './member/member.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { FundingComponent } from './funding/funding.component';
 import { EditFundingComponent } from './edit-funding/edit-funding.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -38,6 +41,7 @@ export function tokenGetter() {
       EditFundingComponent
    ],
    imports: [
+      BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
       BrowserModule,
       AppRoutingModule,
@@ -48,13 +52,15 @@ export function tokenGetter() {
       TabsModule.forRoot(),
       TooltipModule.forRoot(),
       JwtModule.forRoot({
-         config : {
+         config: {
             tokenGetter: tokenGetter,
             whitelistedDomains: ['34.192.48.45:5000', '34.192.48.45:80'],
             blacklistedRoutes: ['']
          }
       }),
       ModalModule.forRoot(),
+      CollapseModule.forRoot(),
+      AccordionModule.forRoot(),
    ],
    providers: [],
    bootstrap: [
