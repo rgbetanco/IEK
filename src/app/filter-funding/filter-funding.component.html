@@ -1,0 +1,52 @@
+<app-nav></app-nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-2" style="background-color: rgb(255, 254, 254);">
+      <app-sidebar 
+        (statusChanged) = "updateStatusListener($event)"
+        [needRefresh] = "menuNeedRefresh"
+      ></app-sidebar>
+    </div>
+    <div class="col col-10">
+      <div class="row">
+        <div class="col-12 from-group form-inline ml-10 mt-2">
+      
+          <input list="snameToList" type="text" class="form-control" placeholder="募資紀錄來源" [(ngModel)]="sname_string" (ngModelChange)="deputySName($event)"/>
+          <datalist id="snameToList">
+            <div *ngFor="let item of sname">
+              <option value={{item}}>
+            </div>
+          </datalist>
+      
+          <input list="countriesToList" type="text" class="form-control ml-2 mr-2" placeholder="City/Country" [(ngModel)]="cityCountry" (ngModelChange)="processCountry($event)"/>
+          <datalist id="countriesToList">
+            <div *ngFor="let country of comboCountries">
+              <option value={{country}}>
+            </div>
+          </datalist>
+          
+        
+          <input placeholder="募資公佈日期" type="text" class="form-control" size="23px" bsDaterangepicker [(ngModel)]="bsRangePValue" (ngModelChange)="processPDate($event)">
+          <input placeholder="紀錄取得日期" type="text" class="form-control ml-2 mr-2" size="23px" bsDaterangepicker [(ngModel)]="bsRangeCValue" (ngModelChange)="processCDate($event)">
+      
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="toSearchText" />
+          <button class="btn btn-primary ml-1" (click)="processToSearch()"><i class="fa fa-search"></i></button>
+          <a href="{{fundingDownloadUrl}}" target="_blank"><button class="btn btn-primary ml-1"><i class="fa fa-download"></i></button></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-12">
+          <app-list-funding [sname]="snameToSearch" 
+                          [cityCountry] = "cityCountry" 
+                          [toSearch] = "toSearch"
+                          [initDate] = "initDate"
+                          [endDate] = "endDate"
+                          [dateField] = "dateField"
+                          [status] = "status"
+                          (statusChanged) = "updatedStatusListener($event)">
+          </app-list-funding>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

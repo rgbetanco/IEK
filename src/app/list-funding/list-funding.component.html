@@ -1,0 +1,372 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-12" style="background-color: rgb(255, 255, 255)">
+      <table class="table table-hover table-sm mt-2">
+        <thead class="thead-dark">
+            <tr>
+              <!-- COMP_ID -->
+              <th class="centered-th mx-auto p-2 perc5" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.id'"
+                (click)="changeArrange('funding.id')">
+                <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                  編號<i class="fa fa-sort-asc ml-1"></i>
+                </span>
+                <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                  編號<i class="fa fa-sort-desc ml-1"></i>
+                </span>
+              </th>
+              <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.id'"
+                (click)="changeArrange('funding.id')">
+                編號 <i class="fa fa-unsorted"></i>
+              </th>
+    
+               <!-- COMP_NAME -->
+               <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.company_name'"
+               (click)="changeArrange('funding.company_name')">
+               <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                 公司名稱<i class="fa fa-sort-asc ml-1"></i>
+               </span>
+               <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                 公司名稱<i class="fa fa-sort-desc ml-1"></i>
+               </span>
+             </th>
+             <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.company_name'"
+               (click)="changeArrange('funding.company_name')">
+               公司名稱 <i class="fa fa-unsorted"></i>
+             </th>
+    
+              <!-- COMP_ADDRESS -->
+              <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.address'"
+              (click)="changeArrange('funding.address')">
+              <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                國家/城市<i class="fa fa-sort-asc ml-1"></i>
+              </span>
+              <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                國家/城市<i class="fa fa-sort-desc ml-1"></i>
+              </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.address'"
+              (click)="changeArrange('funding.address')">
+              國家/城市 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- INVESTMENT TYPE 募資階段 -->
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.investment_type'"
+              (click)="changeArrange('funding.investment_type')">
+              <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                募資階段<i class="fa fa-sort-asc ml-1"></i>
+              </span>
+              <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                募資階段<i class="fa fa-sort-desc ml-1"></i>
+              </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.investment_type'"
+              (click)="changeArrange('funding.investment_type')">
+              募資階段 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- ANNOUNCED ON 募資公布日期 -->
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.announced_on'"
+              (click)="changeArrange('funding.announced_on')">
+              <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                募資公布日期<i class="fa fa-sort-asc ml-1"></i>
+              </span>
+              <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                募資公布日期<i class="fa fa-sort-desc ml-1"></i>
+              </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.announced_on'"
+              (click)="changeArrange('funding.announced_on')">
+              募資公布日期 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- raised_amount - 已募資額 -->
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.raised_amount'"
+              (click)="changeArrange('funding.raised_amount')">
+              <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                已募資額<i class="fa fa-sort-asc ml-1"></i>
+              </span>
+              <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                已募資額<i class="fa fa-sort-desc ml-1"></i>
+              </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.raised_amount'"
+              (click)="changeArrange('funding.raised_amount')">
+              已募資額 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- raised_currency_code - 幣別 -->
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.raised_currency_code'"
+              (click)="changeArrange('funding.raised_currency_code')">
+              <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                幣別<i class="fa fa-sort-asc ml-1"></i>
+              </span>
+              <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                幣別<i class="fa fa-sort-desc ml-1"></i>
+              </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.raised_currency_code'"
+              (click)="changeArrange('funding.raised_currency_code')">
+              幣別 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- post_amount - 交易後估值 -->
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.post_amount'"
+              (click)="changeArrange('funding.post_amount')">
+              <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                交易後估值<i class="fa fa-sort-asc ml-1"></i>
+              </span>
+              <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                交易後估值<i class="fa fa-sort-desc ml-1"></i>
+              </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.post_amount'"
+              (click)="changeArrange('funding.post_amount')">
+              交易後估值 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- post_currency_code - 幣別 -->
+            <th class="centered-th mx-auto p-2 perc5" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'funding.post_currency_code'"
+              (click)="changeArrange('funding.post_currency_code')">
+              <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                幣別<i class="fa fa-sort-asc ml-1"></i>
+              </span>
+              <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                幣別<i class="fa fa-sort-desc ml-1"></i>
+              </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc5" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'funding.post_currency_code'"
+              (click)="changeArrange('funding.post_currency_code')">
+              幣別 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- sname - 來源網站 -->
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'article.s_name'"
+              (click)="changeArrange('article.s_name')">
+              <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                來源網站<i class="fa fa-sort-asc ml-1"></i>
+              </span>
+              <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                來源網站<i class="fa fa-sort-desc ml-1"></i>
+              </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'article.s_name'"
+              (click)="changeArrange('article.s_name')">
+              來源網站 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- article title - 新聞標題 -->
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor === 'article.title'"   
+                (click)="changeArrange('article.title')">
+            <span *ngIf="fundingToSearch.Arrange === 'ASC'">
+                新聞標題<i class="fa fa-sort-asc ml-1"></i>
+            </span>
+            <span *ngIf="fundingToSearch.Arrange === 'DESC'">
+                新聞標題<i class="fa fa-sort-desc ml-1"></i>
+            </span>
+            </th>
+            <th class="centered-th mx-auto p-2 perc10" scope="col" *ngIf="fundingToSearch.ArrangeFor !== 'article.title'"   
+                (click)="changeArrange('article.title')">   
+                新聞標題 <i class="fa fa-unsorted"></i>
+            </th>
+    
+            <!-- article url - 新聞連結 -->
+            <th class="centered-th mx-auto p-2 perc5" scope="col">新聞連結</th>
+            <!-- action -->
+            <th scope="col" class="text-center perc10">管理</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let list of articleFundingToList">
+                <td (click)="openModal(articleContent, list.id)">{{list.id}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.company_name.substr(0, 4)}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.address.substr(0,8)}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.investment_type.substr(0,9)}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.announced_on.substr(0,10)}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.raised_amount}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.raised_currency_code}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.post_amount}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.post_currency_code}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.s_name}}</td>
+                <td (click)="openModal(articleContent, list.id)">{{list.title.substr(0,5)}}</td>
+                <td class="text-center"><a href={{list.page_url}} target="_blank"><i class="fa fa-border fa-link button button6"></i></a></td>
+                <td class="text-center">
+                    <i tooltip="展開" (click)="openModal(template, list.id)" class="fa fa-border fa-external-link button button1"></i>
+                    <span *ngIf="writePermission > 0 || adminPermission > 0">
+                        <i tooltip="編輯" (click)="navigateToEdit(list.id)" class="fa fa-border fa-border fa-edit button button2"></i>
+                        <i tooltip="保留" (click)="openModal(confirmSave, list.id)" class="fa fa-border fa-border fa-save button button3"></i>
+                        <i tooltip="送出" (click)="openModal(confirmSend, list.id)" class="fa fa-border fa-border fa-send button button4"></i>
+                        <i tooltip="刪除" (click)="openModal(confirmDelete, list.id)" class="fa fa-border fa-border fa-remove button button5"></i>
+                    </span>
+                  </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>
+
+
+<div class="container" style="margin-top: 25px">
+    <div class="row text-center">
+      <div class="col col-sm-10">
+        <pagination class="justify-content-center" [boundaryLinks]="true" [totalItems]="paging.TotalCount" [(ngModel)]="paging.CurrentPage" [maxSize]=10
+          (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+          lastText="{{paging.TotalPages}} &raquo;">
+        </pagination>
+      </div>
+      <div class="col col-sm-2">
+        <div class="form-group form-inline ml-2">
+          <input class="form-control form-control-sm col-md-4" type="text" name="newpage" placeholder="Go to page"
+            [(ngModel)]="gotopage">
+          <button class="form-control form-control-sm btn btn-outline-primary ml-2" (click)="goToPage()"> <i
+              class="fa fa-search"></i> 提交</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<ng-template #confirmSave>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">確認保留</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    保留資料，不更新至前台
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" style="background-color: #FA6A00; color: white;" (click)="changeStatus(2)"> 保留 <fa-icon [icon]="faUserTimes" size="lg" style="color: white !important; margin-left: 5px; "></fa-icon></button>
+  </div>
+</ng-template>
+
+<ng-template #confirmSend>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">確認送出</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    請再次確認該筆資料是否正確？
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" (click)="changeStatus(1)"><i class="fa fa-send"></i> 確認</button>
+  </div>
+</ng-template>
+
+<ng-template #articleContent>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{selectedArticleFunding.title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>內文</strong> : {{selectedArticleFunding.content}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{selectedArticleFunding.company_name}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- class="modal-body"> -->
+<!-- id -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>編號</strong> : {{selectedArticleFunding.id}}
+    </div>
+<!-- company name -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>公司名稱</strong> : {{selectedArticleFunding.company_name}}
+    </div>
+<!-- address -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>地區</strong> : {{selectedArticleFunding.address}}
+    </div>
+<!-- investment type -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>募資階段</strong> : {{selectedArticleFunding.investment_type}}
+    </div>
+<!-- announced on -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>募資公布日期</strong> : {{selectedArticleFunding.announced_on}}
+    </div>
+<!-- raised amount -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>已募資額</strong> : {{selectedArticleFunding.raised_amount}}
+    </div>
+<!-- raised amount currency -->
+    <div class="alert alert-success m-2" role="alert">
+      <strong>已募資額幣別</strong> : {{selectedArticleFunding.raised_currency_code}}
+    </div>
+<!-- post amount -->
+    <div class="alert alert-success m-2" role="alert">
+      <strong>交易後估值</strong> : {{selectedArticleFunding.post_amount}}
+    </div>
+<!-- post amount currency -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>交易後估值幣別</strong> : {{selectedArticleFunding.post_currency_code}}
+    </div>
+<!-- created -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>資料建立日期</strong> : {{selectedArticleFunding.created}}
+    </div>
+<!-- updated -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>上次資料日期</strong> : {{selectedArticleFunding.updated}}
+    </div>
+<!-- investor names -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>投資者名稱</strong> : {{selectedArticleFunding.investor_names}}
+    </div>
+<!-- investor count -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>投資者數目</strong> : {{selectedArticleFunding.investor_count}}
+    </div>
+<!-- capital sought amount -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>預募資額</strong> : {{selectedArticleFunding.capital_sought_amount}}
+    </div>
+<!-- capital sought amount currency -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>預資額幣別</strong> : {{selectedArticleFunding.capital_sought_currency_code}}
+    </div>
+<!-- s_name -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>來源網站</strong> : {{selectedArticleFunding.s_name}}
+    </div>
+<!-- author -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>作者</strong> : {{selectedArticleFunding.author}}
+    </div>
+<!-- title -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>新聞標題</strong> : {{selectedArticleFunding.title}}
+    </div>
+<!-- URL -->
+    <div class="alert alert-dark m-2" role="alert">
+      <strong>新聞連結</strong> : <button class="btn" (click)="goToUrl()" style="cursor:pointer;" >{{selectedArticleFunding.url}}</button>
+    </div>
+</ng-template>
+
+<ng-template #confirmDelete>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">刪除資料</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    請再次確認該筆資料是否刪除？
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" style="background-color: #1C7CD5; color: white;" (click)="deleteFunding()"><i class="fa fa-send"></i> 確認</button>
+  </div>
+</ng-template>

@@ -7,7 +7,10 @@ import { CompanyToSearch } from '../CompanyToSearch';
 import { CompanyToList } from '../CompanyToList';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
+import { faUserCheck, faBuilding, faUserTimes, faExclamationCircle, faMoneyBillAlt, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+
 declare let alertify: any;
+alertify.set('notifier', 'position', 'top-center');
 
 @Component({
   selector: 'app-edit-funding',
@@ -15,6 +18,14 @@ declare let alertify: any;
   styleUrls: ['./edit-funding.component.css']
 })
 export class EditFundingComponent implements OnInit {
+
+  // icons
+  faUserCheck = faUserCheck;
+  faBuilding = faBuilding;
+  faUserTimes = faUserTimes;
+  faExclamationCircle = faExclamationCircle;
+  faMoneyBillAlt = faMoneyBillAlt;
+  faUserEdit = faUserEdit;
 
   private subscription: Subscription;
   modalRef: BsModalRef;
@@ -43,7 +54,12 @@ export class EditFundingComponent implements OnInit {
     done: '0',
     confirmed: 0,
     comp_keyword: '',
-    extra:''
+    extra: '',
+    representative: '',
+    approved_date: '',
+    capital: 0,
+    location: '',
+    established_date: ''
   };
 
   FundingToList: FundingToList = {
@@ -64,7 +80,10 @@ export class EditFundingComponent implements OnInit {
     investor_names: '',
     url: '',
     created: '',
-    updated: ''
+    updated: '',
+    s_name: '',
+    author: '',
+    title: '',
   };
 
   compToSearch: CompanyToSearch = {
@@ -72,7 +91,14 @@ export class EditFundingComponent implements OnInit {
     PageSize: 10,
     ToSearch: '',
     ArrangeFor: 'id',
-    Arrange: 'ASC'
+    Arrange: 'ASC',
+    Filter: {
+      companySource: [],
+      companyIndustry: [],
+      approvedDate: [],
+      updatedDate: []
+    },
+    Status: 0
   };
 
   id = 0
@@ -83,9 +109,7 @@ export class EditFundingComponent implements OnInit {
   ngOnInit() {
 
     this.subscription = this.activatedRoute.params.subscribe(
-
       param => {
-
         this.id = param['id'];
         this.type = param['type'];  // 1 = add, 0 = edit
         if (this.type < 1) {
@@ -93,7 +117,6 @@ export class EditFundingComponent implements OnInit {
         } else {
           this.FundingToList.comp_id = this.id
         }
-
       }
     );
   }
@@ -104,7 +127,7 @@ export class EditFundingComponent implements OnInit {
         this.FundingToList.comp_id = returned['r'];
         this.modalRef.hide();
       }, error => {
-        alertify.error('Error: Network or possibly duplicated record');
+        alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
       }
     )
   }
@@ -114,7 +137,8 @@ export class EditFundingComponent implements OnInit {
   }
 
   searchCompanyKeyword() {
-    this.companyService.listCompany(this.compToSearch).subscribe(
+    let companyStatus = +localStorage.getItem('companyListStatus');
+    this.companyService.listCompany(this.compToSearch, companyStatus).subscribe(
       returned => {
         if (returned) {
           this.FundingToList.comp_id = returned['companies'][0]['id'];
@@ -133,12 +157,34 @@ export class EditFundingComponent implements OnInit {
 
   }
 
-  actionFunding() {
-    if (this.type < 1 ) {
+  actionFunding(toKeep) {
+    if (this.type < 1) {
       this.editFunding()
     } else {
       this.addFunding()
     }
+
+    if (toKeep == 1) {
+      localStorage.setItem('status', '2')
+      this.updateStatus(2);
+    } else {
+      localStorage.setItem('status', '1');
+      this.updateStatus(1);
+    }
+  }
+
+  updateStatus(newStatus) {
+    this.fundingService.changeFundingStatus(+this.FundingToList.id, newStatus).subscribe(
+      result => {
+        if (result['r'] === 0) {
+          alertify.success('保留成功');
+        } else {
+          alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
+        }
+      }, error => {
+        alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
+      }
+    )
   }
 
   addFunding() {
@@ -173,7 +219,7 @@ export class EditFundingComponent implements OnInit {
 
       },
       error => {
-        alertify.error('Error: Network or possibly duplicated record');
+        alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
       }
     );
   }
@@ -196,11 +242,11 @@ export class EditFundingComponent implements OnInit {
 
       },
       error => {
-        alertify.error('Error: Network');
+        alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
       }
 
     );
 
   }
-  
+
 }

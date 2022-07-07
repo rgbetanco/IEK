@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
-  companyURL: 'http://rgbetanco.net:8084/company',
-  memberURL: 'http://rgbetanco.net:8084/user',
-  loginURL: 'http://rgbetanco.net:8084/user/signin',
-  fundingURL: 'http://rgbetanco.net:8084/funding'
+  companyURL: 'http://iek-project.yajantech.com.tw/company',
+  memberURL: 'http://iek-project.yajantech.com.tw/user',
+  loginURL: 'http://iek-project.yajantech.com.tw/user/signin',
+  fundingURL: 'http://iek-project.yajantech.com.tw/funding'
 };
 
 // http://34.192.48.45:5000

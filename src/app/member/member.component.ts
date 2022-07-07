@@ -8,6 +8,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {Location} from '@angular/common';
 
 declare let alertify: any;
+alertify.set('notifier','position', 'top-center');
 
 
 @Component({

@@ -1,0 +1,791 @@
+.mediaViewInfo {
+	--web-view-name: Home page;
+	--web-view-id: Home_page;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Home_page;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Home_page {
+	position: absolute;
+	width: 1366px;
+	height: 768px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: Home page;
+	--web-view-id: Home_page;
+	--web-enable-deep-linking: true;
+}
+@keyframes fadein {
+
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+
+}
+
+#___ {
+	position: absolute;
+	width: 1366px;
+	height: 91px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_313 {
+	position: absolute;
+	overflow: visible;
+	width: 1366px;
+	height: 91px;
+	left: 0px;
+	top: 0px;
+}
+#logo3 {
+	position: absolute;
+	width: 273px;
+	height: 51px;
+	left: 18px;
+	top: 14.737px;
+	overflow: visible;
+}
+#Group_4 {
+	position: absolute;
+	width: 90px;
+	height: 40px;
+	left: 823px;
+	top: 30px;
+	overflow: visible;
+}
+.Rectangle_82 {
+	position: absolute;
+	overflow: visible;
+	width: 90px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+}
+#____by {
+	position: absolute;
+	left: 40px;
+	top: 9px;
+	overflow: visible;
+	width: 37px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4px;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(28,124,213,1);
+}
+.Icon_awesome_home {
+	overflow: visible;
+	position: absolute;
+	width: 28.487px;
+	height: 23.5px;
+	left: 11.999px;
+	top: 7px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_9 {
+	position: absolute;
+	width: 90px;
+	height: 40px;
+	left: 1243px;
+	top: 30px;
+	overflow: visible;
+	--web-animation: fadein 1s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: Home_page_log_in.html;
+	cursor: pointer;
+}
+.Rectangle_82_b {
+	position: absolute;
+	overflow: visible;
+	width: 90px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	--web-animation: fadein 1s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: Home_page_log_in.html;
+	cursor: pointer;
+}
+#__ {
+	position: absolute;
+	left: 47px;
+	top: 9px;
+	overflow: visible;
+	width: 33px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4px;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(28,124,213,1);
+}
+.Icon_awesome_sign_out_alt {
+	overflow: visible;
+	position: absolute;
+	width: 30px;
+	height: 20.003px;
+	left: 10px;
+	top: 8.997px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_5 {
+	position: absolute;
+	width: 127px;
+	height: 40px;
+	left: 927px;
+	top: 30px;
+	overflow: visible;
+}
+.Rectangle_82_ca {
+	position: absolute;
+	overflow: visible;
+	width: 127px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+}
+#____ {
+	position: absolute;
+	left: 49px;
+	top: 9px;
+	overflow: visible;
+	width: 65px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4px;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(28,124,213,1);
+}
+.Icon_awesome_users {
+	overflow: visible;
+	position: absolute;
+	width: 30.194px;
+	height: 25px;
+	left: 11.294px;
+	top: 7px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_6 {
+	position: absolute;
+	width: 163px;
+	height: 27.017px;
+	left: 1066px;
+	top: 37.134px;
+	overflow: visible;
+}
+#user_itri_org_tw {
+	position: absolute;
+	left: 34px;
+	top: 0px;
+	overflow: visible;
+	width: 130px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(28,124,213,0.816);
+}
+.Icon_awesome_user_circle {
+	overflow: visible;
+	position: absolute;
+	width: 27.017px;
+	height: 27.017px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#____card {
+	position: absolute;
+	width: 455px;
+	height: 261px;
+	left: 118px;
+	top: 254px;
+	overflow: visible;
+}
+.Rectangle_314 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 473px;
+	height: 279px;
+	left: 0px;
+	top: 0px;
+}
+#______ {
+	position: absolute;
+	left: 161px;
+	top: 14px;
+	overflow: visible;
+	width: 145px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	color: rgba(55,58,60,0.816);
+}
+.Icon_awesome_building {
+	overflow: visible;
+	position: absolute;
+	width: 28.748px;
+	height: 31.569px;
+	left: 120.5px;
+	top: 14px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_15 {
+	position: absolute;
+	width: 103px;
+	height: 25px;
+	left: 263px;
+	top: 76px;
+	overflow: visible;
+}
+#_235_ {
+	position: absolute;
+	left: 72px;
+	top: 3px;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(55,58,60,0.816);
+}
+#_____ch {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 73px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(55,58,60,0.816);
+}
+#Group_114 {
+	position: absolute;
+	width: 152.43px;
+	height: 22.993px;
+	left: 229.57px;
+	top: 147px;
+	overflow: visible;
+	--web-animation: fadein 0.3s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: Keep_list.html;
+	cursor: pointer;
+}
+#Group_17 {
+	position: absolute;
+	width: 119px;
+	height: 22px;
+	left: 33.43px;
+	top: 0px;
+	overflow: visible;
+}
+#_16_ {
+	position: absolute;
+	left: 96px;
+	top: 3px;
+	overflow: visible;
+	width: 24px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(55,58,60,0.816);
+}
+#_______cl {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 97px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(55,58,60,0.816);
+}
+.Icon_awesome_user_times {
+	overflow: visible;
+	position: absolute;
+	width: 27.489px;
+	height: 21.993px;
+	left: 0px;
+	top: 1px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_14 {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	left: -1536px;
+	top: -264px;
+	overflow: visible;
+	--web-animation: fadein 0.3s ease-out;
+	--web-action-type: page;
+	--web-action-target: Need_to_confirm_list_of_company_______.html;
+	cursor: pointer;
+}
+#_____co {
+	position: absolute;
+	left: 54px;
+	top: 76px;
+	overflow: visible;
+	width: 73px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(55,58,60,0.816);
+}
+#_1430_ {
+	position: absolute;
+	left: 126px;
+	top: 77px;
+	overflow: visible;
+	width: 45px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(55,58,60,0.816);
+}
+.Icon_material_rate_review {
+	overflow: visible;
+	position: absolute;
+	width: 23.25px;
+	height: 26.57px;
+	left: 17px;
+	top: 76px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_16 {
+	position: absolute;
+	width: 160.427px;
+	height: 22px;
+	left: 229.573px;
+	top: 113px;
+	overflow: visible;
+	--web-animation: fadein 0.3s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: Updated_list.html;
+	cursor: pointer;
+}
+#_219_ {
+	position: absolute;
+	left: 129.427px;
+	top: 3px;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(55,58,60,0.816);
+}
+#_______ct {
+	position: absolute;
+	left: 33.427px;
+	top: 0px;
+	overflow: visible;
+	width: 97px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(55,58,60,0.816);
+}
+.Icon_awesome_user_check {
+	overflow: visible;
+	position: absolute;
+	width: 26.772px;
+	height: 21.715px;
+	left: 0px;
+	top: 0.285px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Line_104 {
+	overflow: visible;
+	position: absolute;
+	width: 361px;
+	height: 1px;
+	left: 52.5px;
+	top: 61.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_18 {
+	position: absolute;
+	width: 183.823px;
+	height: 25px;
+	left: 17.177px;
+	top: 183px;
+	overflow: visible;
+	--web-animation: fadein 0.3s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: Unmatched_list.html;
+	cursor: pointer;
+}
+#_66_ {
+	position: absolute;
+	left: 160.823px;
+	top: 4px;
+	overflow: visible;
+	width: 24px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(55,58,60,0.816);
+}
+#_______ {
+	position: absolute;
+	left: 33.823px;
+	top: 0px;
+	overflow: visible;
+	width: 127px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(55,58,60,0.816);
+}
+.Icon_awesome_exclamation_circl {
+	overflow: visible;
+	position: absolute;
+	width: 23.214px;
+	height: 22.039px;
+	left: 0px;
+	top: 0.208px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#______card {
+	position: absolute;
+	width: 455px;
+	height: 261px;
+	left: 796px;
+	top: 254px;
+	overflow: visible;
+}
+.Rectangle_312 {
+	filter: drop-shadow(0px 3px 7px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 476px;
+	height: 282px;
+	left: 0px;
+	top: 0px;
+}
+.Line_101 {
+	overflow: visible;
+	position: absolute;
+	width: 359px;
+	height: 1px;
+	left: 52.5px;
+	top: 60.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#_______c {
+	position: absolute;
+	left: 171px;
+	top: 12px;
+	overflow: visible;
+	width: 145px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	color: rgba(55,58,60,0.816);
+}
+#_235__c {
+	position: absolute;
+	left: 335px;
+	top: 79px;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(55,58,60,0.816);
+}
+#_____c {
+	position: absolute;
+	left: 261px;
+	top: 76px;
+	overflow: visible;
+	width: 73px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(55,58,60,0.816);
+}
+#Group_13 {
+	position: absolute;
+	width: 153px;
+	height: 26.57px;
+	left: 22px;
+	top: 78px;
+	overflow: visible;
+	--web-animation: fadein 0.3s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: need_to_confirm_list_of_funding_________.html;
+	cursor: pointer;
+}
+#_1430__c {
+	position: absolute;
+	left: 109px;
+	top: 1px;
+	overflow: visible;
+	width: 45px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(55,58,60,0.816);
+}
+#_____da {
+	position: absolute;
+	left: 37px;
+	top: 0px;
+	overflow: visible;
+	width: 73px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(55,58,60,0.816);
+}
+.Icon_material_rate_review_c {
+	overflow: visible;
+	position: absolute;
+	width: 23.25px;
+	height: 26.57px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_10 {
+	position: absolute;
+	width: 162.427px;
+	height: 22px;
+	left: 227.573px;
+	top: 113px;
+	overflow: visible;
+	--web-animation: fadein 0.3s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: Updated_list_page.html;
+	cursor: pointer;
+}
+#_219__db {
+	position: absolute;
+	left: 131.427px;
+	top: 3px;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(55,58,60,0.816);
+}
+#_______dc {
+	position: absolute;
+	left: 33.427px;
+	top: 0px;
+	overflow: visible;
+	width: 97px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(55,58,60,0.816);
+}
+.Icon_awesome_user_check_dd {
+	overflow: visible;
+	position: absolute;
+	width: 26.772px;
+	height: 21.715px;
+	left: 0px;
+	top: 0.285px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_12 {
+	position: absolute;
+	width: 185.823px;
+	height: 25px;
+	left: 22.177px;
+	top: 183px;
+	overflow: visible;
+	--web-animation: fadein 0.3s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: Unmatched_list_from_DB_.html;
+	cursor: pointer;
+}
+#_66__df {
+	position: absolute;
+	left: 162.823px;
+	top: 4px;
+	overflow: visible;
+	width: 24px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(55,58,60,0.816);
+}
+#________dg {
+	position: absolute;
+	left: 33.823px;
+	top: 0px;
+	overflow: visible;
+	width: 127px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(55,58,60,0.816);
+}
+.Icon_awesome_exclamation_circl_dh {
+	overflow: visible;
+	position: absolute;
+	width: 23.214px;
+	height: 22.039px;
+	left: 0px;
+	top: 0.208px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Icon_awesome_money_bill_alt {
+	overflow: visible;
+	position: absolute;
+	width: 58.602px;
+	height: 30.715px;
+	left: 95px;
+	top: 14.285px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_11 {
+	position: absolute;
+	width: 121px;
+	height: 22px;
+	left: 261px;
+	top: 147px;
+	overflow: visible;
+}
+#_20_ {
+	position: absolute;
+	left: 98px;
+	top: 3px;
+	overflow: visible;
+	width: 24px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(55,58,60,0.816);
+}
+#_______dl {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 97px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(55,58,60,0.816);
+}
+#Group_115 {
+	position: absolute;
+	width: 27.489px;
+	height: 21.993px;
+	left: 227.57px;
+	top: 147px;
+	overflow: visible;
+	--web-animation: fadein 0.3s ease-in-out;
+	--web-action-type: page;
+	--web-action-target: Keep_list_page.html;
+	cursor: pointer;
+}
+.Icon_awesome_user_times_dn {
+	overflow: visible;
+	position: absolute;
+	width: 27.489px;
+	height: 21.993px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}

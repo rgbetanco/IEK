@@ -17,7 +17,7 @@ export class NavComponent implements OnInit {
   userEmail = '';
 
   public membersLink = '/members';
-  public dashboardLink = '/dashboard';
+  public dashboardLink = '/entry/screen';
 
   constructor(private router: Router, public jwtHelper: JwtHelperService) { }
 

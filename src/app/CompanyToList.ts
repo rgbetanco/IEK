@@ -21,4 +21,9 @@ export interface CompanyToList {
     confirmed: number;
     comp_keyword: string;
     extra: string;
+    representative: string;
+    approved_date: string;
+    capital: number;
+    location: string;
+    established_date: string;
 }

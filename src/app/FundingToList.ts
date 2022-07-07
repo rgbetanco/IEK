@@ -17,4 +17,7 @@ export interface FundingToList {
     url: string;
     created: string;
     updated: string;
+    s_name: string;
+    author: string;
+    title: string;
 }

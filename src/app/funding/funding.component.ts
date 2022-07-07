@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 declare let alertify: any;
+alertify.set('notifier','position', 'top-center');
 
 @Component({
   selector: 'app-funding',
@@ -25,7 +26,14 @@ export class FundingComponent implements OnInit {
     PageSize: 10,
     ToSearch: '',
     ArrangeFor: 'id',
-    Arrange: 'ASC'
+    Arrange: 'ASC',
+    Filter: {
+      companySource: [],
+      companyIndustry: [],
+      approvedDate: [],
+      updatedDate: []
+    },
+    Status: 0
   };
 
   gotopage = 1;
@@ -43,7 +51,10 @@ export class FundingComponent implements OnInit {
 
   ngOnInit() {
 
-    this.compToSearch.ToSearch = this.route.snapshot.paramMap.get('id')
+    let initial_id = this.route.snapshot.paramMap.get('id');
+    if (initial_id != '0') {
+      this.compToSearch.ToSearch = initial_id
+    }
 
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/login']);
@@ -143,7 +154,7 @@ export class FundingComponent implements OnInit {
 
       },
       error => {
-        alertify.error('Error: Network');
+        alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
       }
 
     );

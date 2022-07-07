@@ -7,6 +7,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Location } from '@angular/common';
 import { JwtHelperService } from '@auth0/angular-jwt';
 declare let alertify: any;
+alertify.set('notifier', 'position', 'top-center');
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -47,18 +48,23 @@ export class CompanyComponent implements OnInit {
     done: '0',
     confirmed: 0,
     comp_keyword: '',
-    extra:''
+    extra: '',
+    representative: '',
+    approved_date: '',
+    capital: 0,
+    location: '',
+    established_date: ''
   };
 
-  constructor ( private activatedRoute: ActivatedRoute,
-                private compService: CompanyService,
-                private _location: Location,
-                public jwtHelper: JwtHelperService,
-                private modalService: BsModalService) {
+  constructor(private activatedRoute: ActivatedRoute,
+    private compService: CompanyService,
+    private _location: Location,
+    public jwtHelper: JwtHelperService,
+    private modalService: BsModalService) {
 
-   }
+  }
 
-   openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>) {
 
     this.modalRef = this.modalService.show(template);
 
@@ -73,7 +79,7 @@ export class CompanyComponent implements OnInit {
       this._location.back();
     }
 
-    this.subscription = this.activatedRoute.params.subscribe (
+    this.subscription = this.activatedRoute.params.subscribe(
 
       param => {
 
@@ -86,9 +92,9 @@ export class CompanyComponent implements OnInit {
 
   getCompany() {
 
-    this.compService.getCompany(this.company_id).subscribe (
+    this.compService.getCompany(this.company_id).subscribe(
       company => {
-         this.companyToEdit =  <CompanyToList>company[0];
+        this.companyToEdit = <CompanyToList>company[0];
       }
 
     );
@@ -101,14 +107,14 @@ export class CompanyComponent implements OnInit {
 
   editCompany() {
 
-    this.compService.editCompany(this.companyToEdit).subscribe (
+    this.compService.editCompany(this.companyToEdit).subscribe(
 
       returned => {
 
         if (returned['r'] === 0) {
 
           this.modalRef.hide();
-          window.location.reload();
+          //window.location.reload();
 
         } else {
 
@@ -119,7 +125,7 @@ export class CompanyComponent implements OnInit {
 
       },
       error => {
-        alertify.error('Error: Network or possibly duplicated record');
+        alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
       }
 
     );

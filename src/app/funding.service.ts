@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FundingToList } from './FundingToList';
 import { CompanyToSearch } from './CompanyToSearch';
 import { environment } from 'src/environments/environment';
+import { FundingToSearch } from './FundingToSearch';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,28 @@ export class FundingService {
 
     return this.http.get<any>(url, this.httpOptions);
 
+  }
+
+  fundingDownload() {
+    const url = this.fundingUrl + '/download';
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
+  getFundingList(fun: FundingToSearch): Observable<any> {
+
+    const url = this.fundingUrl + '/list?ToSearch=' + fun.ToSearch + '&PageNumber=' + fun.PageNumber +
+      '&PageSize=' + fun.PageSize +
+      '&ArrangeFor=' + fun.ArrangeFor + '&Arrange=' + fun.Arrange + '&InitDate=' + fun.InitDate + 
+      '&EndDate=' + fun.EndDate + '&DateField=' + fun.DateField + '&sname=' + fun.SName + '&status=' + fun.Status;
+
+    return this.http.get<any>(url, this.httpOptions);
+    
+  }
+
+  changeFundingStatus(Id: number, newStatus: number): Observable<any> {
+    const url = this.fundingUrl + '/change/status';
+    const a = {id: Id, status: newStatus}
+    return this.http.put<any>(url, a, this.httpOptions);
   }
 
   getFundingById(Id: number): Observable<any> {
@@ -55,4 +78,21 @@ export class FundingService {
     return this.http.post<any>(this.fundingUrl + '/delete', a, this.httpOptions);
 
   }
+
+  countFunding(): Observable<any> {
+
+    return this.http.get<any>(this.fundingUrl + '/count', this.httpOptions);
+
+  }
+
+  snameFunding(): Observable<any> {
+    return this.http.get<any>(this.fundingUrl + '/sname', this.httpOptions); 
+  }
+
+  getCountries(): Observable<any> {
+
+    return this.http.get<any>(this.fundingUrl + '/country', this.httpOptions);
+
+  }
+
 }

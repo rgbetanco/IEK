@@ -6,6 +6,7 @@ import { LoginService } from '../login.service';
 import { Login } from '../login';
 import { MemberService } from '../member.service';
 declare let alertify: any;
+alertify.set('notifier','position', 'top-center');
 
 @Component({
   selector: 'app-login',
@@ -37,14 +38,15 @@ export class LoginComponent implements OnInit {
         if (this.loginModel.r === 0) {
 
           localStorage.setItem('token', this.loginModel.token);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/entry/screen']);
 
         } else {
-          alertify.error('Wrong username or password');
+          alertify.error('Email帳號或密碼錯誤');
         }
 
       }, error => {
-        alertify.error('Error: Possible network error');
+        alertify.error('網路或伺服器連接失敗, 請重新整理網頁');  
+
       }
     );
 

@@ -30,23 +30,32 @@ export class CompanyService {
     return 'Y'+ Math.floor(Math.random()*(1111111 - 9999999 + 1)+9999999);
   }
 
-  listCompany(comp: CompanyToSearch): Observable<any> {
+  listCompany(comp: CompanyToSearch, status: number): Observable<any> {
 
-    const url = this.companyUrl + '/list?PageNumber=' + comp.PageNumber +
-              '&PageSize=' + comp.PageSize + '&ToSearch=' + comp.ToSearch +
-              '&ArrangeFor=' + comp.ArrangeFor + '&Arrange=' + comp.Arrange;
+    // const url = this.companyUrl + '/list?PageNumber=' + comp.PageNumber +
+    //           '&PageSize=' + comp.PageSize + '&ToSearch=' + comp.ToSearch +
+    //   '&ArrangeFor=' + comp.ArrangeFor + '&Arrange=' + comp.Arrange +
+    //   '&status=' + status + '&filter=' + comp.Filter;
 
-    return this.http.get<any>(url, this.httpOptions);
+    const url = this.companyUrl + '/list'
+
+    console.log(comp)
+
+    return this.http.post<CompanyToSearch>(url, comp, this.httpOptions);
 
   }
 
-  confirmCompany(id: number): Observable<any> {
+  confirmCompany(id: number, status: number): Observable<any> {
 
     const url = this.companyUrl + '/confirm';
-    const param = 'id=' + id;
+    const param = 'id=' + id + '&status=' + status;
 
     return this.http.post<any>(url, param, this.httpOptions);
 
+  }
+
+  countCompIndustry(): Observable<any> {
+    return this.http.get<any>(this.companyUrl + '/countCompIndustry', this.httpOptions); 
   }
 
   clearconfirmedCompany(): Observable<any> {
@@ -84,6 +93,12 @@ export class CompanyService {
   editCompany(c: CompanyToList): Observable<CompanyToList> {
 
     return this.http.put<any>(this.companyUrl, c, this.httpOptions);
+
+  }
+
+  countCompany(): Observable<any> {
+
+    return this.http.get<any>(this.companyUrl + '/count', this.httpOptions);
 
   }
 

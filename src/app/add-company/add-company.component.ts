@@ -3,6 +3,7 @@ import { CompanyToList } from '../CompanyToList';
 import { CompanyService } from '../company.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 declare let alertify: any;
+alertify.set('notifier', 'position', 'top-center');
 
 @Component({
   selector: 'app-add-company',
@@ -38,7 +39,12 @@ export class AddCompanyComponent implements OnInit {
     done: '0',
     confirmed: 0,
     comp_keyword: '',
-    extra:''
+    extra: '',
+    representative: '',
+    approved_date: '',
+    capital: 0,
+    location: '',
+    established_date: ''
   };
 
   constructor(private compService: CompanyService, private modalService: BsModalService) { }
@@ -60,12 +66,12 @@ export class AddCompanyComponent implements OnInit {
 
     this.compService.addCompany(this.companyToAdd).subscribe(
       returned => {
-        
-          this.modalRef.hide();
-          window.history.back();
-      
+
+        this.modalRef.hide();
+        window.history.back();
+
       }, error => {
-        alertify.error('Error: Network or possibly duplicated record');
+        alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
       }
     )
 
