@@ -1,4 +1,5 @@
 export class FundingToSearch {
+    compIndustry: string[];
     PageNumber: number;
     PageSize: number;
     ToSearch: string;

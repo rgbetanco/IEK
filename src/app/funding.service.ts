@@ -31,18 +31,29 @@ export class FundingService {
 
   }
 
+  countCompIndustry(): Observable<any> {
+    return this.http.get<any>(this.fundingUrl + '/countCompIndustry', this.httpOptions); 
+  }
+
   fundingDownload() {
     const url = this.fundingUrl + '/download';
     return this.http.get<any>(url, this.httpOptions);
   }
 
   getFundingList(fun: FundingToSearch): Observable<any> {
+    var compIndustry = '';
+    if (fun.compIndustry.length > 0) {
+      fun.compIndustry.forEach(element => {
+        compIndustry += '&compIndustry[]=' + element  
+      });
+      
+    }
 
     const url = this.fundingUrl + '/list?ToSearch=' + fun.ToSearch + '&PageNumber=' + fun.PageNumber +
       '&PageSize=' + fun.PageSize +
       '&ArrangeFor=' + fun.ArrangeFor + '&Arrange=' + fun.Arrange + '&InitDate=' + fun.InitDate + 
-      '&EndDate=' + fun.EndDate + '&DateField=' + fun.DateField + '&sname=' + fun.SName + '&status=' + fun.Status;
-
+      '&EndDate=' + fun.EndDate + '&DateField=' + fun.DateField + '&sname=' + fun.SName + '&status=' + fun.Status + compIndustry;
+       console.log(url)
     return this.http.get<any>(url, this.httpOptions);
     
   }

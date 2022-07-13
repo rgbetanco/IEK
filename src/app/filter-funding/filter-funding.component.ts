@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FundingService } from '../funding.service';
 import { environment } from 'src/environments/environment';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 declare let alertify: any;
 alertify.set('notifier','position', 'top-center');
 
@@ -17,6 +18,11 @@ export class FilterFundingComponent implements OnInit {
   menuNeedRefresh = 0;
   sname = [];
   comboCountries = [];
+  selectedItems = [];
+  dropdownListIndustry = [];
+  selectedItemsIndustry = [];
+  dropdownSettings: IDropdownSettings = {};
+  dropdownSettingsIndustry: IDropdownSettings = {};
   cityCountry = "";
   sname_string = "";
   snameToSearch = "";         // use this
@@ -38,6 +44,18 @@ export class FilterFundingComponent implements OnInit {
   ngOnInit() {
     this.getSName();
     this.getCountries();
+    this.getCountCompIndustry()
+
+    this.selectedItems = []
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
   }
 
   getSName() {
@@ -51,6 +69,27 @@ export class FilterFundingComponent implements OnInit {
         alertify.error('網路或伺服器連接失敗, 請重新整理網頁');
       }
     )
+  }
+
+  getCountCompIndustry() {
+    let tmp = [];
+    this.fundingService.countCompIndustry().subscribe(result => {
+      result.forEach(element => {
+        tmp.push(
+          { item_id: element.item_id, item_text: element.item_text }
+        )
+      });
+      this.dropdownListIndustry = tmp;
+    })
+  }
+
+  onItemIndustrySelect(item: any) {
+    this.selectedItems = []
+    this.cleanValues();
+  }
+  onSelectIndustryAll(items: any) {
+    this.selectedItems = []
+    this.cleanValues();
   }
 
   cleanValues() {

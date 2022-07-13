@@ -7,6 +7,7 @@ import { ArticleFundingToList } from '../ArticleFundingToList';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { faUserCheck, faBuilding, faUserTimes, faExclamationCircle, faMoneyBillAlt, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+//import { Console } from 'console';
 
 declare let alertify: any;
 alertify.set('notifier','position', 'top-center');
@@ -26,6 +27,7 @@ export class ListFundingComponent implements OnInit, OnChanges {
   faMoneyBillAlt = faMoneyBillAlt;
   faUserEdit = faUserEdit;
 
+  @Input() compIndustry: {item_id: number, item_text: string}[];
   @Input() cityCountry: string;
   @Input() toSearch: string;
   @Input() initDate: string;
@@ -37,6 +39,7 @@ export class ListFundingComponent implements OnInit, OnChanges {
   @Output() statusChanged = new EventEmitter<Number>();
 
   fundingToSearch: FundingToSearch = {
+    compIndustry: [],
     PageNumber: 1,
     PageSize: 10,
     ToSearch: '',
@@ -112,10 +115,21 @@ export class ListFundingComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
+    this.fundingToSearch.compIndustry = [];
     this.fundingToSearch.ToSearch = "";
     this.fundingToSearch.InitDate = "";
     this.fundingToSearch.EndDate = "";
     this.fundingToSearch.DateField = "";
+    if (this.compIndustry.length > 0) {
+      
+      this.compIndustry.forEach(element => {
+        let indexOfParenthesis = element.item_text.indexOf("(")
+        this.fundingToSearch.compIndustry.push(element.item_text.substring(0, indexOfParenthesis))
+      })
+
+      //console.log(this.fundingToSearch.compIndustry)
+      
+    }
     if (this.cityCountry) {
       this.fundingToSearch.ToSearch = this.cityCountry;
     } else if (this.sname) {
@@ -175,7 +189,7 @@ export class ListFundingComponent implements OnInit, OnChanges {
   }
 
   getList(status) {
-    console.log(status);
+    // console.log(status);
     this.fundingToSearch.Status = status;
     this.fundingToSearch.PageSize = this.paging.PageSize;
     this.fundingToSearch.PageNumber = this.paging.CurrentPage;
