@@ -171,7 +171,11 @@ export class DashboardComponent implements OnInit, OnChanges {
     }
 
     this.getCompanies(this.companyStatus);
+    this.getDownloadableCompany();
 
+  }
+  getDownloadableCompany() {
+    this.companyService.companyDownload().subscribe();
   }
 // COMPANY SOURCE
   onItemSelect(item: any) {

@@ -79,7 +79,7 @@ export class ListFundingComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    
+
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/login']);
     }
@@ -98,6 +98,7 @@ export class ListFundingComponent implements OnInit, OnChanges {
     // }
 
     this.getList(this.status);
+    this.getDownloadableFunding();
   }
 
   setSelectedArticleFunding() {
@@ -186,6 +187,10 @@ export class ListFundingComponent implements OnInit, OnChanges {
 
     this.getList(this.status);
 
+  }
+
+  getDownloadableFunding() {
+    this.fundingService.fundingDownload().subscribe();
   }
 
   getList(status) {

@@ -35,7 +35,7 @@ export class FundingService {
     return this.http.get<any>(this.fundingUrl + '/countCompIndustry', this.httpOptions); 
   }
 
-  fundingDownload() {
+  fundingDownload(): Observable<any> {
     const url = this.fundingUrl + '/download';
     return this.http.get<any>(url, this.httpOptions);
   }

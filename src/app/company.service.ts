@@ -45,6 +45,11 @@ export class CompanyService {
 
   }
 
+  companyDownload(): Observable<any> {
+    const url = this.companyUrl + '/download';
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
   confirmCompany(id: number, status: number): Observable<any> {
 
     const url = this.companyUrl + '/confirm';

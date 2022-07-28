@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  companyURL: 'http://localhost:5000/company',
-  memberURL: 'http://localhost:5000/user',
-  loginURL: 'http://localhost:5000/user/signin',
-  fundingURL: 'http://localhost:5000/funding',
-  fundingDownloadURL: 'http://localhost:5000/funding.csv',
-  companyDownloadURL: 'http://localhost:5000/company.csv'
+  companyURL: 'http://localhost:5001/company',
+  memberURL: 'http://localhost:5001/user',
+  loginURL: 'http://localhost:5001/user/signin',
+  fundingURL: 'http://localhost:5001/funding',
+  fundingDownloadURL: 'http://localhost:5001/funding.csv',
+  companyDownloadURL: 'http://localhost:5001/company.csv'
 };
 
 /*
